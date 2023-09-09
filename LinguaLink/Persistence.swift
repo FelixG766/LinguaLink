@@ -2,7 +2,7 @@
 //  Persistence.swift
 //  LinguaLink
 //
-//  Created by Yan Hua on 8/9/2023.
+//  Created by Yangru Guo on 8/9/2023.
 //
 
 import CoreData

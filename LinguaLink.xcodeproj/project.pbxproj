@@ -8,21 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		EEDBFCD22AAB01D000E3D5EF /* LinguaLinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */; };
-		EEDBFCD42AAB01D000E3D5EF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD32AAB01D000E3D5EF /* ContentView.swift */; };
+		EEDBFCD42AAB01D000E3D5EF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */; };
 		EEDBFCD62AAB01D000E3D5EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEDBFCD52AAB01D000E3D5EF /* Assets.xcassets */; };
 		EEDBFCD92AAB01D000E3D5EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEDBFCD82AAB01D000E3D5EF /* Preview Assets.xcassets */; };
 		EEDBFCDB2AAB01D000E3D5EF /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCDA2AAB01D000E3D5EF /* Persistence.swift */; };
 		EEDBFCDE2AAB01D000E3D5EF /* LinguaLink.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCDC2AAB01D000E3D5EF /* LinguaLink.xcdatamodeld */; };
+		EEDBFCE82AAB029F00E3D5EF /* TranslationHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCE72AAB029F00E3D5EF /* TranslationHistory.swift */; };
+		EEDBFCEA2AAB032500E3D5EF /* TranslationServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCE92AAB032500E3D5EF /* TranslationServiceViewModel.swift */; };
+		EEDBFCEC2AAB03A900E3D5EF /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCEB2AAB03A900E3D5EF /* TranslationService.swift */; };
+		EEDBFCEE2AAB598000E3D5EF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCED2AAB598000E3D5EF /* MainView.swift */; };
+		EEDBFCF02AAB61E800E3D5EF /* TranslationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCEF2AAB61E800E3D5EF /* TranslationHistoryView.swift */; };
+		EEDBFCF22AAC47AB00E3D5EF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCF12AAC47AB00E3D5EF /* SettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EEDBFCCE2AAB01D000E3D5EF /* LinguaLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinguaLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinguaLinkApp.swift; sourceTree = "<group>"; };
-		EEDBFCD32AAB01D000E3D5EF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
 		EEDBFCD52AAB01D000E3D5EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEDBFCD82AAB01D000E3D5EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EEDBFCDA2AAB01D000E3D5EF /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		EEDBFCDD2AAB01D000E3D5EF /* LinguaLink.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LinguaLink.xcdatamodel; sourceTree = "<group>"; };
+		EEDBFCE72AAB029F00E3D5EF /* TranslationHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHistory.swift; sourceTree = "<group>"; };
+		EEDBFCE92AAB032500E3D5EF /* TranslationServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationServiceViewModel.swift; sourceTree = "<group>"; };
+		EEDBFCEB2AAB03A900E3D5EF /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
+		EEDBFCED2AAB598000E3D5EF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		EEDBFCEF2AAB61E800E3D5EF /* TranslationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHistoryView.swift; sourceTree = "<group>"; };
+		EEDBFCF12AAC47AB00E3D5EF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +68,9 @@
 			isa = PBXGroup;
 			children = (
 				EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */,
-				EEDBFCD32AAB01D000E3D5EF /* ContentView.swift */,
+				EEDBFCE42AAB01F400E3D5EF /* Model */,
+				EEDBFCE62AAB021100E3D5EF /* View */,
+				EEDBFCE52AAB01FB00E3D5EF /* ViewModel */,
 				EEDBFCD52AAB01D000E3D5EF /* Assets.xcassets */,
 				EEDBFCDA2AAB01D000E3D5EF /* Persistence.swift */,
 				EEDBFCDC2AAB01D000E3D5EF /* LinguaLink.xcdatamodeld */,
@@ -71,6 +85,34 @@
 				EEDBFCD82AAB01D000E3D5EF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EEDBFCE42AAB01F400E3D5EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EEDBFCE72AAB029F00E3D5EF /* TranslationHistory.swift */,
+				EEDBFCEB2AAB03A900E3D5EF /* TranslationService.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EEDBFCE52AAB01FB00E3D5EF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EEDBFCE92AAB032500E3D5EF /* TranslationServiceViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EEDBFCE62AAB021100E3D5EF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */,
+				EEDBFCEF2AAB61E800E3D5EF /* TranslationHistoryView.swift */,
+				EEDBFCED2AAB598000E3D5EF /* MainView.swift */,
+				EEDBFCF12AAC47AB00E3D5EF /* SettingView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,10 +185,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEDBFCEA2AAB032500E3D5EF /* TranslationServiceViewModel.swift in Sources */,
+				EEDBFCF22AAC47AB00E3D5EF /* SettingView.swift in Sources */,
+				EEDBFCEE2AAB598000E3D5EF /* MainView.swift in Sources */,
 				EEDBFCDB2AAB01D000E3D5EF /* Persistence.swift in Sources */,
 				EEDBFCDE2AAB01D000E3D5EF /* LinguaLink.xcdatamodeld in Sources */,
-				EEDBFCD42AAB01D000E3D5EF /* ContentView.swift in Sources */,
+				EEDBFCD42AAB01D000E3D5EF /* TranslationView.swift in Sources */,
 				EEDBFCD22AAB01D000E3D5EF /* LinguaLinkApp.swift in Sources */,
+				EEDBFCEC2AAB03A900E3D5EF /* TranslationService.swift in Sources */,
+				EEDBFCF02AAB61E800E3D5EF /* TranslationHistoryView.swift in Sources */,
+				EEDBFCE82AAB029F00E3D5EF /* TranslationHistory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
