@@ -11,9 +11,9 @@ struct MainView: View {
     var body: some View {
         TabView {
             Group{
-                TranslationView(viewModel: TranslationViewModel(translator: GoogleCloudTranslationService()))
+                TranslationView(viewModel: TranslationViewModel())
                     .tabItem {
-                        Image(systemName: "text.book.closed")
+                        Image(systemName: "character.book.closed.fill")
                         Text("Translate")
                     }
                 

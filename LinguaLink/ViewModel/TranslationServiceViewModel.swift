@@ -10,20 +10,28 @@ import Foundation
 class TranslationViewModel: ObservableObject {
     
     @Published var translationHistory: [TranslationHistory] = []
+    @Published var translation = ""
 
     private let translator: TranslationProvider
 
-    init(translator: TranslationProvider) {
-        self.translator = translator
+    init() {
+        self.translator = Constant.defaultTranslationProvider
     }
 
-    func translateAndStore(_ text: String, from sourceLanguage: String, to targetLanguage: String) {
-        translator.translate(text, from: sourceLanguage, to: targetLanguage) { translation, error in
-            if let translation = translation {
-                let historyItem = TranslationHistory(originalText: text, translatedText: translation)
-                self.translationHistory.append(historyItem)
-            } else if let error = error {
-                // Handle the error.
+    func translateWithSelectedModel(_ text: String, from sourceLanguage: String, to targetLanguage: String, with selectedModel:String){
+        
+        if selectedModel == "GOOGLE"{
+            
+            translator.translate(text, from: sourceLanguage, to: targetLanguage) { translatedText, error in
+                DispatchQueue.main.async {
+                    if let translation = translatedText {
+                        self.translation = translation
+                        let historyItem = TranslationHistory(originalText: text, translatedText: translation)
+                        self.translationHistory.append(historyItem)
+                    } else if let error = error {
+                        print(error)
+                    }
+                }
             }
         }
     }

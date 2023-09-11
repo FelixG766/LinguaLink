@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE2F3CFA2AAED7250053A2D4 /* OCRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2F3CF92AAED7250053A2D4 /* OCRManager.swift */; };
 		EEDBFCD22AAB01D000E3D5EF /* LinguaLinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */; };
 		EEDBFCD42AAB01D000E3D5EF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */; };
 		EEDBFCD62AAB01D000E3D5EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEDBFCD52AAB01D000E3D5EF /* Assets.xcassets */; };
@@ -19,9 +20,13 @@
 		EEDBFCEE2AAB598000E3D5EF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCED2AAB598000E3D5EF /* MainView.swift */; };
 		EEDBFCF02AAB61E800E3D5EF /* TranslationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCEF2AAB61E800E3D5EF /* TranslationHistoryView.swift */; };
 		EEDBFCF22AAC47AB00E3D5EF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCF12AAC47AB00E3D5EF /* SettingView.swift */; };
+		EEDBFCF42AAD720D00E3D5EF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCF32AAD720D00E3D5EF /* Constant.swift */; };
+		EEDBFCF82AADF63600E3D5EF /* LanguageOptions.json in Resources */ = {isa = PBXBuildFile; fileRef = EEDBFCF72AADF63600E3D5EF /* LanguageOptions.json */; };
+		EEDBFCFA2AADF7A400E3D5EF /* LanguageOptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCF92AADF7A400E3D5EF /* LanguageOptionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE2F3CF92AAED7250053A2D4 /* OCRManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRManager.swift; sourceTree = "<group>"; };
 		EEDBFCCE2AAB01D000E3D5EF /* LinguaLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinguaLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinguaLinkApp.swift; sourceTree = "<group>"; };
 		EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
@@ -35,6 +40,9 @@
 		EEDBFCED2AAB598000E3D5EF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EEDBFCEF2AAB61E800E3D5EF /* TranslationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHistoryView.swift; sourceTree = "<group>"; };
 		EEDBFCF12AAC47AB00E3D5EF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		EEDBFCF32AAD720D00E3D5EF /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		EEDBFCF72AADF63600E3D5EF /* LanguageOptions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LanguageOptions.json; sourceTree = "<group>"; };
+		EEDBFCF92AADF7A400E3D5EF /* LanguageOptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageOptionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +98,12 @@
 		EEDBFCE42AAB01F400E3D5EF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EEDBFCF72AADF63600E3D5EF /* LanguageOptions.json */,
 				EEDBFCE72AAB029F00E3D5EF /* TranslationHistory.swift */,
+				EEDBFCF92AADF7A400E3D5EF /* LanguageOptionManager.swift */,
 				EEDBFCEB2AAB03A900E3D5EF /* TranslationService.swift */,
+				EE2F3CF92AAED7250053A2D4 /* OCRManager.swift */,
+				EEDBFCF32AAD720D00E3D5EF /* Constant.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEDBFCD92AAB01D000E3D5EF /* Preview Assets.xcassets in Resources */,
+				EEDBFCF82AADF63600E3D5EF /* LanguageOptions.json in Resources */,
 				EEDBFCD62AAB01D000E3D5EF /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,8 +204,11 @@
 				EEDBFCDB2AAB01D000E3D5EF /* Persistence.swift in Sources */,
 				EEDBFCDE2AAB01D000E3D5EF /* LinguaLink.xcdatamodeld in Sources */,
 				EEDBFCD42AAB01D000E3D5EF /* TranslationView.swift in Sources */,
+				EE2F3CFA2AAED7250053A2D4 /* OCRManager.swift in Sources */,
+				EEDBFCFA2AADF7A400E3D5EF /* LanguageOptionManager.swift in Sources */,
 				EEDBFCD22AAB01D000E3D5EF /* LinguaLinkApp.swift in Sources */,
 				EEDBFCEC2AAB03A900E3D5EF /* TranslationService.swift in Sources */,
+				EEDBFCF42AAD720D00E3D5EF /* Constant.swift in Sources */,
 				EEDBFCF02AAB61E800E3D5EF /* TranslationHistoryView.swift in Sources */,
 				EEDBFCE82AAB029F00E3D5EF /* TranslationHistory.swift in Sources */,
 			);

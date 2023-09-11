@@ -9,12 +9,13 @@ import SwiftUI
 import CoreData
 
 struct TranslationView: View {
-    @ObservedObject var viewModel: TranslationViewModel
     
+    private let languageOptionManager = LanguageOptionManager()
+    @ObservedObject var viewModel: TranslationViewModel
     @State private var inputText = ""
-    @State private var sourceLanguage = "en"
-    @State private var targetLanguage = "fr"
-    @State private var translationStyle = "normal"
+    @State private var sourceLanguage = Constant.defaultSourceLanguage
+    @State private var targetLanguage = Constant.defaultTargetLanguage
+    @State private var translationProvider = Constant.defaultTranslator
     @State private var horizontalPadding = 25.0
     @State private var translatedText = ""
     
@@ -22,6 +23,7 @@ struct TranslationView: View {
         NavigationView {
             VStack(spacing: 16) {
                 Spacer()
+                //MARK: - Top Row
                 HStack{
                     Text("LinguaLink")
                         .font(.custom("Avenir Next", size: 20))
@@ -50,6 +52,7 @@ struct TranslationView: View {
                 }
                 .padding(.horizontal, horizontalPadding)
                 
+                //MARK: - Input Text Field
                 TextEditor(text: $inputText)
                     .background(Color.clear)
                     .font(.body)
@@ -60,47 +63,53 @@ struct TranslationView: View {
                     )
                     .padding(.horizontal, horizontalPadding)
                 
+                //MARK: - Language Options Row
                 HStack{
                     
                     Picker("Source Language", selection: $sourceLanguage) {
-                        Text("English").tag("en")
-                        Text("French").tag("fr")
-                        Text("Chinese").tag("zh")
+                        ForEach(languageOptionManager.loadLanguageOptions(), id: \.self) { option in
+                            Text(option.name)
+                                .tag(option.code)
+                                .lineLimit(1)
+                        }
                     }
+                    .frame(maxWidth: .infinity)
                     
                     Spacer()
                     
-                    Image(systemName: "arrowshape.right")
+                    Image(systemName: "arrow.right")
                         .foregroundColor(.blue)
                     
                     Spacer()
                     
                     Picker("Source Language", selection: $targetLanguage) {
-                        Text("English").tag("en")
-                        Text("French").tag("fr")
-                        Text("Chinese").tag("zh")
+                        ForEach(languageOptionManager.loadLanguageOptions(), id: \.self) { option in
+                            Text(option.name)
+                                .tag(option.code)
+                                .lineLimit(1)
+                        }
                     }
+                    .frame(maxWidth: .infinity)
                 }
                 .padding(.horizontal, horizontalPadding)
                 
                 
-                
-                Picker("Translation Style", selection: $translationStyle) {
-                    Text("DEFAULT").tag("DEF")
-                    Text("GOOGLE").tag("GOO")
-                    Text("CHATGPT").tag("GPT")
+                //MARK: - Different Translation Model
+                Picker("Translation Style", selection: $translationProvider) {
+                    Text("GOOGLE").tag("GOOGLE")
+                    Text("CHATGPT").tag("CHATGPT")
                 }
                 .pickerStyle(.segmented)
                 .padding(.horizontal, horizontalPadding)
                 .foregroundColor(.primary)
                 
+                //MARK: - Manual Translate Button
                 Button("Translate") {
-                    viewModel.translateAndStore(inputText, from: sourceLanguage, to: targetLanguage)
-                    inputText = ""
+                    viewModel.translateWithSelectedModel(inputText, from: sourceLanguage, to: targetLanguage, with: translationProvider)
                 }
                 
-                
-                TextEditor(text: $translatedText)
+                //MARK: - Output Text Field
+                TextEditor(text: $viewModel.translation)
                     .font(.body)
                     .foregroundColor(.primary)
                     .overlay(
@@ -109,6 +118,7 @@ struct TranslationView: View {
                     )
                     .padding(.horizontal, horizontalPadding)
                 
+                //MARK: - Audio Assistence and Save
                 HStack{
                     Spacer()
                     Button(action: {
@@ -135,7 +145,7 @@ struct TranslationView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = TranslationViewModel(translator: Translator())
+        let viewModel = TranslationViewModel()
         return TranslationView(viewModel: viewModel)
     }
 }
