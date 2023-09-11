@@ -2,7 +2,7 @@
 //  LanguageOptionManager.swift
 //  LinguaLink
 //
-//  Created by Yan Hua on 10/9/2023.
+//  Created by Yangru Guo on 10/9/2023.
 //
 
 import Foundation

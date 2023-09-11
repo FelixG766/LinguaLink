@@ -8,16 +8,23 @@
 import SwiftUI
 import CoreData
 
+import CoreImage
+import VisionKit
+import Vision
+import CoreML
+import NaturalLanguage
+
 struct TranslationView: View {
     
     private let languageOptionManager = LanguageOptionManager()
+    private let languageDetectionManager = LanguageDetectionManager()
+    @StateObject private var cameraManager = CameraManager()
     @ObservedObject var viewModel: TranslationViewModel
-    @State private var inputText = ""
+    @State private var horizontalPadding = 25.0
     @State private var sourceLanguage = Constant.defaultSourceLanguage
     @State private var targetLanguage = Constant.defaultTargetLanguage
     @State private var translationProvider = Constant.defaultTranslator
-    @State private var horizontalPadding = 25.0
-    @State private var translatedText = ""
+    @State private var detectedLanguage:NLLanguage = .undetermined
     
     var body: some View {
         NavigationView {
@@ -33,16 +40,24 @@ struct TranslationView: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color.blue.opacity(0.1))
                         )
-                        .shadow(color: .gray, radius: 5, x: 0, y: 2) 
+                        .shadow(color: .gray, radius: 5, x: 0, y: 2)
                     Spacer()
                     Button(action: {
-                        print("Camera button tapped")
+                        cameraManager.showImagePicker()
                     }) {
                         Image(systemName: "camera")
                             .foregroundColor(.blue)
                     }
                     .padding(.trailing, horizontalPadding)
-
+                    .onReceive(cameraManager.$selectedImage) { selectedImage in
+                        if let image = selectedImage {
+                            viewModel.recognizeText(from: image)
+                        }
+                    }
+                    .sheet(isPresented: $cameraManager.isShowingImagePicker) {
+                        ImagePicker(image: $cameraManager.selectedImage)
+                    }
+                    
                     Button(action: {
                         print("Microphone button tapped")
                     }) {
@@ -53,7 +68,7 @@ struct TranslationView: View {
                 .padding(.horizontal, horizontalPadding)
                 
                 //MARK: - Input Text Field
-                TextEditor(text: $inputText)
+                TextEditor(text: $viewModel.inputText)
                     .background(Color.clear)
                     .font(.body)
                     .foregroundColor(.primary)
@@ -62,6 +77,16 @@ struct TranslationView: View {
                             .stroke(Color.gray.opacity(0.9), lineWidth: 1)
                     )
                     .padding(.horizontal, horizontalPadding)
+                    .onTapGesture {
+                        // Dismiss the keyboard when tapped outside of the TextField
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
+                    .onChange(of: viewModel.inputText) { newValue in
+                        languageDetectionManager.detectLanguage(for: newValue) { detectedLanguage in
+                            self.detectedLanguage = detectedLanguage
+                        }
+                        sourceLanguage = languageDetectionManager.mappingToTranslationOptions(from: detectedLanguage)
+                    }
                 
                 //MARK: - Language Options Row
                 HStack{
@@ -105,7 +130,7 @@ struct TranslationView: View {
                 
                 //MARK: - Manual Translate Button
                 Button("Translate") {
-                    viewModel.translateWithSelectedModel(inputText, from: sourceLanguage, to: targetLanguage, with: translationProvider)
+                    viewModel.translateWithSelectedModel(viewModel.inputText, from: sourceLanguage, to: targetLanguage, with: translationProvider)
                 }
                 
                 //MARK: - Output Text Field
@@ -117,6 +142,11 @@ struct TranslationView: View {
                             .stroke(Color.gray.opacity(0.9), lineWidth: 1)
                     )
                     .padding(.horizontal, horizontalPadding)
+                    .disabled(true)
+                    .onTapGesture {
+                        // Dismiss the keyboard when tapped outside of the TextField
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
                 
                 //MARK: - Audio Assistence and Save
                 HStack{
@@ -128,7 +158,7 @@ struct TranslationView: View {
                             .foregroundColor(.blue)
                     }
                     .padding(.trailing, horizontalPadding)
-
+                    
                     Button(action: {
                         print("Microphone button tapped")
                     }) {

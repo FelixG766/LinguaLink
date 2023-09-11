@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		EE2F3CFA2AAED7250053A2D4 /* OCRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2F3CF92AAED7250053A2D4 /* OCRManager.swift */; };
+		EE2F3CFE2AAEE4DA0053A2D4 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2F3CFD2AAEE4DA0053A2D4 /* CameraManager.swift */; };
+		EE2F3D002AAEE7E20053A2D4 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2F3CFF2AAEE7E20053A2D4 /* ImagePicker.swift */; };
+		EE5174872AAF618800CFB249 /* LanguageDetectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5174862AAF618800CFB249 /* LanguageDetectionManager.swift */; };
 		EEDBFCD22AAB01D000E3D5EF /* LinguaLinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */; };
 		EEDBFCD42AAB01D000E3D5EF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */; };
 		EEDBFCD62AAB01D000E3D5EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEDBFCD52AAB01D000E3D5EF /* Assets.xcassets */; };
@@ -27,6 +30,9 @@
 
 /* Begin PBXFileReference section */
 		EE2F3CF92AAED7250053A2D4 /* OCRManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRManager.swift; sourceTree = "<group>"; };
+		EE2F3CFD2AAEE4DA0053A2D4 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		EE2F3CFF2AAEE7E20053A2D4 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		EE5174862AAF618800CFB249 /* LanguageDetectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageDetectionManager.swift; sourceTree = "<group>"; };
 		EEDBFCCE2AAB01D000E3D5EF /* LinguaLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinguaLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinguaLinkApp.swift; sourceTree = "<group>"; };
 		EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
@@ -100,9 +106,12 @@
 			children = (
 				EEDBFCF72AADF63600E3D5EF /* LanguageOptions.json */,
 				EEDBFCE72AAB029F00E3D5EF /* TranslationHistory.swift */,
+				EE2F3CFF2AAEE7E20053A2D4 /* ImagePicker.swift */,
 				EEDBFCF92AADF7A400E3D5EF /* LanguageOptionManager.swift */,
 				EEDBFCEB2AAB03A900E3D5EF /* TranslationService.swift */,
+				EE2F3CFD2AAEE4DA0053A2D4 /* CameraManager.swift */,
 				EE2F3CF92AAED7250053A2D4 /* OCRManager.swift */,
+				EE5174862AAF618800CFB249 /* LanguageDetectionManager.swift */,
 				EEDBFCF32AAD720D00E3D5EF /* Constant.swift */,
 			);
 			path = Model;
@@ -205,10 +214,13 @@
 				EEDBFCDE2AAB01D000E3D5EF /* LinguaLink.xcdatamodeld in Sources */,
 				EEDBFCD42AAB01D000E3D5EF /* TranslationView.swift in Sources */,
 				EE2F3CFA2AAED7250053A2D4 /* OCRManager.swift in Sources */,
+				EE5174872AAF618800CFB249 /* LanguageDetectionManager.swift in Sources */,
 				EEDBFCFA2AADF7A400E3D5EF /* LanguageOptionManager.swift in Sources */,
+				EE2F3CFE2AAEE4DA0053A2D4 /* CameraManager.swift in Sources */,
 				EEDBFCD22AAB01D000E3D5EF /* LinguaLinkApp.swift in Sources */,
 				EEDBFCEC2AAB03A900E3D5EF /* TranslationService.swift in Sources */,
 				EEDBFCF42AAD720D00E3D5EF /* Constant.swift in Sources */,
+				EE2F3D002AAEE7E20053A2D4 /* ImagePicker.swift in Sources */,
 				EEDBFCF02AAB61E800E3D5EF /* TranslationHistoryView.swift in Sources */,
 				EEDBFCE82AAB029F00E3D5EF /* TranslationHistory.swift in Sources */,
 			);
@@ -342,11 +354,13 @@
 				DEVELOPMENT_TEAM = GF884VD933;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to capture images for text recognition.\n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -371,11 +385,13 @@
 				DEVELOPMENT_TEAM = GF884VD933;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to capture images for text recognition.\n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
