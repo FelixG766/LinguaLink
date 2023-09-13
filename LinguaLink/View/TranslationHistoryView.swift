@@ -9,7 +9,35 @@ import SwiftUI
 
 struct TranslationHistoryView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List(translationHistoryArray) { history in
+                NavigationLink(destination: TranslationHistoryDetailView(history: history)) {
+                    VStack(alignment: .leading) {
+                        HStack{
+                            Image(systemName: "calendar")
+                            Spacer()
+                            Text("Date: \(history.compactDate))")
+                                .font(.headline)
+                        }
+                        .padding(.bottom, 10)
+                        HStack{
+                            Text("Topic:")
+                                .padding(.bottom,5)
+                            Spacer()
+                            Text("\(history.topic)")
+                        }
+                        HStack{
+                            Text("Type:")
+                                .padding(.bottom,5)
+                            Spacer()
+                            Text("\(history.type)")
+                        }
+
+                    }
+                }
+            }
+            .navigationTitle("Translation History")
+        }
     }
 }
 

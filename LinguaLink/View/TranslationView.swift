@@ -8,18 +8,23 @@
 import SwiftUI
 import CoreData
 
-import CoreImage
-import VisionKit
-import Vision
-import CoreML
+//import CoreImage
+//import VisionKit
+//import Vision
+//import CoreML
 import NaturalLanguage
+import AVFoundation
 
 struct TranslationView: View {
     
     private let languageOptionManager = LanguageOptionManager()
     private let languageDetectionManager = LanguageDetectionManager()
+    
     @StateObject private var cameraManager = CameraManager()
     @ObservedObject var viewModel: TranslationViewModel
+    @ObservedObject var popUpViewModel = PopUpViewModel()
+    
+    @State private var isPopUpPresented = false
     @State private var horizontalPadding = 25.0
     @State private var sourceLanguage = Constant.defaultSourceLanguage
     @State private var targetLanguage = Constant.defaultTargetLanguage
@@ -48,7 +53,6 @@ struct TranslationView: View {
                         Image(systemName: "camera")
                             .foregroundColor(.blue)
                     }
-                    .padding(.trailing, horizontalPadding)
                     .onReceive(cameraManager.$selectedImage) { selectedImage in
                         if let image = selectedImage {
                             viewModel.recognizeText(from: image)
@@ -56,13 +60,6 @@ struct TranslationView: View {
                     }
                     .sheet(isPresented: $cameraManager.isShowingImagePicker) {
                         ImagePicker(image: $cameraManager.selectedImage)
-                    }
-                    
-                    Button(action: {
-                        print("Microphone button tapped")
-                    }) {
-                        Image(systemName: "mic")
-                            .foregroundColor(.blue)
                     }
                 }
                 .padding(.horizontal, horizontalPadding)
@@ -77,10 +74,6 @@ struct TranslationView: View {
                             .stroke(Color.gray.opacity(0.9), lineWidth: 1)
                     )
                     .padding(.horizontal, horizontalPadding)
-                    .onTapGesture {
-                        // Dismiss the keyboard when tapped outside of the TextField
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
                     .onChange(of: viewModel.inputText) { newValue in
                         languageDetectionManager.detectLanguage(for: newValue) { detectedLanguage in
                             self.detectedLanguage = detectedLanguage
@@ -134,41 +127,46 @@ struct TranslationView: View {
                 }
                 
                 //MARK: - Output Text Field
-                TextEditor(text: $viewModel.translation)
-                    .font(.body)
-                    .foregroundColor(.primary)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.gray.opacity(0.9), lineWidth: 1)
-                    )
-                    .padding(.horizontal, horizontalPadding)
-                    .disabled(true)
-                    .onTapGesture {
-                        // Dismiss the keyboard when tapped outside of the TextField
-                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    }
+                ScrollView {
+                    Text(viewModel.translation)
+                        .font(.body)
+                        .foregroundColor(.primary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .overlay(
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color.gray.opacity(0.9), lineWidth: 1)
+                )
+                .padding(.horizontal, horizontalPadding)
                 
                 //MARK: - Audio Assistence and Save
                 HStack{
                     Spacer()
                     Button(action: {
-                        print("Camera button tapped")
+                        viewModel.speakOrStopSpeakText()
                     }) {
-                        Image(systemName: "speaker.wave.3")
+                        Image(systemName: viewModel.isSpeaking ? "speaker.slash" : "speaker.wave.1")
                             .foregroundColor(.blue)
                     }
                     .padding(.trailing, horizontalPadding)
                     
                     Button(action: {
-                        print("Microphone button tapped")
+                        isPopUpPresented.toggle()
                     }) {
                         Image(systemName: "square.and.arrow.down")
                             .foregroundColor(.blue)
+                    }
+                    .sheet(isPresented: $isPopUpPresented) {
+                        PopUpView(popUpViewModel: popUpViewModel,originalText:viewModel.inputText,translatedText:viewModel.translation)
                     }
                 }
                 .padding(.horizontal, horizontalPadding)
                 Spacer()
             }
+        }
+        .onTapGesture {
+            // Dismiss the keyboard when tapped outside of the TextField
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
 }

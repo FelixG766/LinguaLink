@@ -6,21 +6,25 @@
 //
 
 import Foundation
+import AVFoundation
 import UIKit
 
-class TranslationViewModel: ObservableObject {
+class TranslationViewModel: ObservableObject, SpeakTextManagerDelegate {
     
     @Published var translationHistory: [TranslationHistory] = []
     @Published var translation = ""
     @Published var inputText = ""
+    @Published var isSpeaking = false
 
     private let translator: TranslationProvider
     private let ocrManager: OCRManager = OCRManager()
+    private let speakTextManager = SpeakTextManager()
 
     init() {
         self.translator = Constant.defaultTranslationProvider
+        speakTextManager.delegate = self
     }
-
+//MARK: - Translate with Selected Model
     func translateWithSelectedModel(_ text: String, from sourceLanguage: String, to targetLanguage: String, with selectedModel:String){
         
         if selectedModel == "GOOGLE"{
@@ -28,8 +32,8 @@ class TranslationViewModel: ObservableObject {
                 DispatchQueue.main.async {
                     if let translation = translatedText {
                         self.translation = translation
-                        let historyItem = TranslationHistory(originalText: text, translatedText: translation)
-                        self.translationHistory.append(historyItem)
+                        //let historyItem = TranslationHistory(originalText: text, translatedText: translation)
+                        //self.translationHistory.append(historyItem)
                     } else if let error = error {
                         print(error)
                     }
@@ -38,7 +42,25 @@ class TranslationViewModel: ObservableObject {
         }
     }
     
+    //MARK: - Extract Text From Image
     func recognizeText(from image: UIImage) {
         inputText = ocrManager.performOCRRequest(to: image)
     }
+    
+    //MARK: - Speak or Stop Speak Text From Output Field
+    func speakOrStopSpeakText() {
+        if(!isSpeaking){
+            speakTextManager.speakText(translatedText: translation)
+            isSpeaking = true
+        }else{
+            speakTextManager.stopSpeaking()
+            isSpeaking = false
+        }
+    }
+    
+    //MARK: - Protocol to Listen to Completion of Speaker
+    func speechDidFinish() {
+        isSpeaking = false
+    }
+    
 }

@@ -77,7 +77,11 @@ struct LanguageDetectionManager{
     }
     
     func mappingToTranslationOptions(from detectedLanguage:NLLanguage) -> String {
-        return languageMapping[detectedLanguage]!
+        if let mappingResult = languageMapping[detectedLanguage]{
+            return mappingResult
+        }else{
+            return "en"
+        }
     }
     
     
