@@ -2,5 +2,9 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22D68" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="HistoryItem" representedClassName="HistoryItem" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="originalText" optional="YES" attributeType="String"/>
+        <attribute name="topic" optional="YES" attributeType="String"/>
+        <attribute name="translatedText" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
     </entity>
 </model>

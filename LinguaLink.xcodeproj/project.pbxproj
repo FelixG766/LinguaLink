@@ -15,6 +15,8 @@
 		EE51748B2AB01EF500CFB249 /* PopUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51748A2AB01EF500CFB249 /* PopUpViewModel.swift */; };
 		EE51748D2AB01F3300CFB249 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51748C2AB01F3300CFB249 /* PopUpView.swift */; };
 		EE51748F2AB148F700CFB249 /* TranslationHistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51748E2AB148F700CFB249 /* TranslationHistoryDetailView.swift */; };
+		EE5174912AB2A39000CFB249 /* TranslationHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5174902AB2A39000CFB249 /* TranslationHistoryCellView.swift */; };
+		EE5174932AB2E28C00CFB249 /* TranslationHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5174922AB2E28C00CFB249 /* TranslationHistoryViewModel.swift */; };
 		EEDBFCD22AAB01D000E3D5EF /* LinguaLinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */; };
 		EEDBFCD42AAB01D000E3D5EF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */; };
 		EEDBFCD62AAB01D000E3D5EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEDBFCD52AAB01D000E3D5EF /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 		EE51748A2AB01EF500CFB249 /* PopUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewModel.swift; sourceTree = "<group>"; };
 		EE51748C2AB01F3300CFB249 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		EE51748E2AB148F700CFB249 /* TranslationHistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHistoryDetailView.swift; sourceTree = "<group>"; };
+		EE5174902AB2A39000CFB249 /* TranslationHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHistoryCellView.swift; sourceTree = "<group>"; };
+		EE5174922AB2E28C00CFB249 /* TranslationHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHistoryViewModel.swift; sourceTree = "<group>"; };
 		EEDBFCCE2AAB01D000E3D5EF /* LinguaLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinguaLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinguaLinkApp.swift; sourceTree = "<group>"; };
 		EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				EEDBFCE92AAB032500E3D5EF /* TranslationServiceViewModel.swift */,
+				EE5174922AB2E28C00CFB249 /* TranslationHistoryViewModel.swift */,
 				EE51748A2AB01EF500CFB249 /* PopUpViewModel.swift */,
 			);
 			path = ViewModel;
@@ -140,6 +145,7 @@
 			children = (
 				EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */,
 				EEDBFCEF2AAB61E800E3D5EF /* TranslationHistoryView.swift */,
+				EE5174902AB2A39000CFB249 /* TranslationHistoryCellView.swift */,
 				EE51748E2AB148F700CFB249 /* TranslationHistoryDetailView.swift */,
 				EEDBFCED2AAB598000E3D5EF /* MainView.swift */,
 				EEDBFCF12AAC47AB00E3D5EF /* SettingView.swift */,
@@ -227,6 +233,7 @@
 				EEDBFCDE2AAB01D000E3D5EF /* LinguaLink.xcdatamodeld in Sources */,
 				EE5174892AB0089000CFB249 /* SpeakTextManager.swift in Sources */,
 				EEDBFCD42AAB01D000E3D5EF /* TranslationView.swift in Sources */,
+				EE5174912AB2A39000CFB249 /* TranslationHistoryCellView.swift in Sources */,
 				EE51748B2AB01EF500CFB249 /* PopUpViewModel.swift in Sources */,
 				EE2F3CFA2AAED7250053A2D4 /* OCRManager.swift in Sources */,
 				EE5174872AAF618800CFB249 /* LanguageDetectionManager.swift in Sources */,
@@ -239,6 +246,7 @@
 				EE2F3D002AAEE7E20053A2D4 /* ImagePicker.swift in Sources */,
 				EEDBFCF02AAB61E800E3D5EF /* TranslationHistoryView.swift in Sources */,
 				EEDBFCE82AAB029F00E3D5EF /* TranslationHistory.swift in Sources */,
+				EE5174932AB2E28C00CFB249 /* TranslationHistoryViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

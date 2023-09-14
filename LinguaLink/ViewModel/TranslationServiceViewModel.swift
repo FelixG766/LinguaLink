@@ -24,6 +24,7 @@ class TranslationViewModel: ObservableObject, SpeakTextManagerDelegate {
         self.translator = Constant.defaultTranslationProvider
         speakTextManager.delegate = self
     }
+    
 //MARK: - Translate with Selected Model
     func translateWithSelectedModel(_ text: String, from sourceLanguage: String, to targetLanguage: String, with selectedModel:String){
         
@@ -32,8 +33,6 @@ class TranslationViewModel: ObservableObject, SpeakTextManagerDelegate {
                 DispatchQueue.main.async {
                     if let translation = translatedText {
                         self.translation = translation
-                        //let historyItem = TranslationHistory(originalText: text, translatedText: translation)
-                        //self.translationHistory.append(historyItem)
                     } else if let error = error {
                         print(error)
                     }

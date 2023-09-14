@@ -8,35 +8,31 @@
 import SwiftUI
 
 struct TranslationHistoryView: View {
+    
+    @ObservedObject var translationHistoryViewModel = TranslationHistoryViewModel()
+    @State private var isDetailViewPresented = false
+    
     var body: some View {
         NavigationView {
-            List(translationHistoryArray) { history in
-                NavigationLink(destination: TranslationHistoryDetailView(history: history)) {
-                    VStack(alignment: .leading) {
-                        HStack{
-                            Image(systemName: "calendar")
-                            Spacer()
-                            Text("Date: \(history.compactDate))")
-                                .font(.headline)
-                        }
-                        .padding(.bottom, 10)
-                        HStack{
-                            Text("Topic:")
-                                .padding(.bottom,5)
-                            Spacer()
-                            Text("\(history.topic)")
-                        }
-                        HStack{
-                            Text("Type:")
-                                .padding(.bottom,5)
-                            Spacer()
-                            Text("\(history.type)")
-                        }
-
+            List {
+                ForEach(translationHistoryViewModel.translationHistoryArray, id: \.self) { history in
+                    NavigationLink(destination: TranslationHistoryDetailView(history: history, translationHistoryViewModel: translationHistoryViewModel,isDetailViewPresented: $isDetailViewPresented)) {
+                        TranslationHistoryCellView(history: history)
+                    }
+                }
+                .onDelete { indexSet in
+                    // Delete the selected items from the database
+                    let indicesToDelete = Array(indexSet)
+                    for index in indicesToDelete {
+                        let historyToDelete = translationHistoryViewModel.translationHistoryArray[index]
+                        translationHistoryViewModel.deleteTranslationHistory(historyToDelete)
                     }
                 }
             }
-            .navigationTitle("Translation History")
+            .navigationTitle("History")
+        }
+        .onAppear{
+            translationHistoryViewModel.updateTranslationHistory()
         }
     }
 }

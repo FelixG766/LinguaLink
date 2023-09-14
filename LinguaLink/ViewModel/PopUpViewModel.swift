@@ -7,10 +7,14 @@
 
 import Foundation
 
-class PopUpViewModel: ObservableObject {
-    @Published var selectedDate = Date()
-    @Published var topic = ""
-    @Published var originalText = ""
-    @Published var translatedText = ""
-    @Published var type = ""
+class PopUpViewModel  {
+    
+    let persistenceController = PersistenceController.shared
+    
+    func saveTranslationHistory(date:Date, topic:String, type:String, originalText:String, translatedText:String){
+        let newTranslationHistory = TranslationHistory(date:date, type:type, topic:topic, originalText:originalText, translatedText: translatedText)
+        persistenceController.saveTranslationHistory(translationHistory: newTranslationHistory)
+    }
+    
+    
 }

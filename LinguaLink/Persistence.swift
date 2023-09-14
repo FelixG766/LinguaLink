@@ -53,4 +53,35 @@ struct PersistenceController {
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
+    
+    
+    func saveTranslationHistory(translationHistory:TranslationHistory){
+        let context = PersistenceController.shared.container.viewContext
+        let newItem = HistoryItem(context: context)
+        newItem.date = translationHistory.date
+        newItem.topic = translationHistory.topic
+        newItem.type = translationHistory.type
+        newItem.originalText = translationHistory.originalText
+        newItem.translatedText = translationHistory.translatedText
+        
+        do {
+            try context.save()
+            print("saved")
+        } catch {
+            print(error)
+        }
+    }
+    
+    func fetchTranslationHistory() -> [HistoryItem]{
+        let context = PersistenceController.shared.container.viewContext
+        let fetchRequest:NSFetchRequest<HistoryItem> = HistoryItem.fetchRequest()
+        
+        do{
+            let historyItems = try context.fetch(fetchRequest)
+            return historyItems
+        }catch{
+            print(error)
+        }
+        return []
+    }
 }

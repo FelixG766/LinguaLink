@@ -9,8 +9,11 @@ import SwiftUI
 
 struct PopUpView: View {
     
-    @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var popUpViewModel: PopUpViewModel
+    @Binding var isPopUpPresented: Bool
+    var popUpViewModel = PopUpViewModel()
+    @State var date:Date = Date()
+    @State var topic:String = ""
+    @State var type:String = ""
     @State var originalText:String
     @State var translatedText:String
     
@@ -21,16 +24,16 @@ struct PopUpView: View {
                 Section() {
                     HStack{
                         Image(systemName: "calendar")
-                        DatePicker("", selection: $popUpViewModel.selectedDate, displayedComponents: .date)
+                        DatePicker("", selection: $date, displayedComponents: .date)
                     }
                 }
                 
                 Section(header: Text("Type")) {
-                    TextField("Enter type", text: $popUpViewModel.type)
+                    TextField("Enter type", text: $type)
                 }
 
                 Section(header: Text("Topic")) {
-                    TextField("Enter topic", text: $popUpViewModel.topic)
+                    TextField("Enter topic", text: $topic)
                 }
 
                 Section(header: Text("Original Text")) {
@@ -50,12 +53,12 @@ struct PopUpView: View {
             .navigationBarTitle("Save Translation")
             .navigationBarItems(
                 leading: Button("Cancel") {
-                    presentationMode.wrappedValue.dismiss()
+                    isPopUpPresented = false;
                 },
                 trailing: Button("Save") {
                     // Handle saving the data here
-                    
-                    presentationMode.wrappedValue.dismiss()
+                    popUpViewModel.saveTranslationHistory(date: date, topic: topic, type: type, originalText: originalText, translatedText: translatedText)
+                    isPopUpPresented = false;
                 }
             )
         }
@@ -67,7 +70,8 @@ struct PopUpView: View {
 }
 
 struct PopUpView_Previews: PreviewProvider {
+    @State static var isPresented = false
     static var previews: some View {
-        PopUpView(popUpViewModel: PopUpViewModel(),originalText: "",translatedText: "")
+        PopUpView(isPopUpPresented: $isPresented, originalText: "",translatedText: "")
     }
 }

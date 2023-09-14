@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TranslationHistory: Identifiable {
+struct TranslationHistory: Identifiable,Hashable {
     let id = UUID()
     let date: Date
     let type: String

@@ -22,7 +22,6 @@ struct TranslationView: View {
     
     @StateObject private var cameraManager = CameraManager()
     @ObservedObject var viewModel: TranslationViewModel
-    @ObservedObject var popUpViewModel = PopUpViewModel()
     
     @State private var isPopUpPresented = false
     @State private var horizontalPadding = 25.0
@@ -43,7 +42,7 @@ struct TranslationView: View {
                         .padding(10)
                         .background(
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(Color.blue.opacity(0.1))
+                                .fill(Color.blue.opacity(0.03))
                         )
                         .shadow(color: .gray, radius: 5, x: 0, y: 2)
                     Spacer()
@@ -88,7 +87,6 @@ struct TranslationView: View {
                         ForEach(languageOptionManager.loadLanguageOptions(), id: \.self) { option in
                             Text(option.name)
                                 .tag(option.code)
-                                .lineLimit(1)
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -100,11 +98,10 @@ struct TranslationView: View {
                     
                     Spacer()
                     
-                    Picker("Source Language", selection: $targetLanguage) {
+                    Picker("Target Language", selection: $targetLanguage) {
                         ForEach(languageOptionManager.loadLanguageOptions(), id: \.self) { option in
                             Text(option.name)
                                 .tag(option.code)
-                                .lineLimit(1)
                         }
                     }
                     .frame(maxWidth: .infinity)
@@ -125,6 +122,11 @@ struct TranslationView: View {
                 Button("Translate") {
                     viewModel.translateWithSelectedModel(viewModel.inputText, from: sourceLanguage, to: targetLanguage, with: translationProvider)
                 }
+                .font(.headline)
+                .foregroundColor(.white)
+                .padding(10)
+                .background(Color.blue)
+                .cornerRadius(10)
                 
                 //MARK: - Output Text Field
                 ScrollView {
@@ -157,7 +159,7 @@ struct TranslationView: View {
                             .foregroundColor(.blue)
                     }
                     .sheet(isPresented: $isPopUpPresented) {
-                        PopUpView(popUpViewModel: popUpViewModel,originalText:viewModel.inputText,translatedText:viewModel.translation)
+                        PopUpView(isPopUpPresented: $isPopUpPresented, originalText: viewModel.inputText, translatedText: viewModel.translation)
                     }
                 }
                 .padding(.horizontal, horizontalPadding)
