@@ -5,30 +5,54 @@ struct TranslationHistoryDetailView: View {
     @State var history: TranslationHistory
     @State var translationHistoryViewModel:TranslationHistoryViewModel
     @State private var showAlert = false
-    @Binding var isDetailViewPresented: Bool
+    @State private var isEditing = false
     @Environment(\.presentationMode) var presentationMode
+    
+    @State private var editedDate: Date = Date()
+    @State private var editedTopic: String = ""
+    @State private var editedType: String = ""
+    private var editedCompactDate:String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: editedDate)
+    }
     
     var body: some View {
         ScrollView{
             Spacer()
             VStack(alignment: .leading, spacing: 16) {
-                HStack{
+                HStack {
                     Text("Date")
                         .font(.headline)
                     Spacer()
-                    Text(history.compactDate)
+                    if isEditing {
+                        DatePicker("", selection: $editedDate, displayedComponents: .date)
+                    } else {
+                        Text(editedCompactDate)
+                    }
                 }
-                HStack{
+                HStack {
                     Text("Topic")
                         .font(.headline)
                     Spacer()
-                    Text(history.topic)
+                    if isEditing {
+                        TextField("Topic", text: $editedTopic)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                    } else {
+                        Text(editedTopic)
+                    }
                 }
-                HStack{
+                HStack {
                     Text("Type")
                         .font(.headline)
                     Spacer()
-                    Text(history.type)
+                    if isEditing {
+                        TextField("Type", text: $editedType)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                    } else {
+                        Text(editedType)
+                    }
                 }
                 Section(header: Text("Original Text").font(.headline).padding(.top, 5)) {
                     Text(history.originalText)
@@ -44,14 +68,46 @@ struct TranslationHistoryDetailView: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    showAlert = true
-                }) {
-                    Label("Delete", systemImage: "trash")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.red)
-                        .cornerRadius(10)
+                HStack {
+                    if isEditing {
+                        Button(action: {
+                            translationHistoryViewModel.updateTrasnlationHistory(history: history, editedDate: editedDate, editedTopic: editedTopic, editedType: editedType)
+//                            translationHistoryViewModel.reloadTranslationHistory()
+                            isEditing.toggle() // Exit edit mode
+                        }) {
+                            Label("Save", systemImage: "square.and.pencil")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(10)
+                                .background(Color.green)
+                                .cornerRadius(5)
+                        }
+                    } else {
+                        Button(action: {
+                            isEditing.toggle() // Enter edit mode
+                        }) {
+                            Label("Edit", systemImage: "pencil")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(10)
+                                .background(Color.blue)
+                                .cornerRadius(5)
+                        }
+                    }
+                    
+                    Button(action: {
+                        showAlert = true
+                    }) {
+                        Label("Delete", systemImage: "trash")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(10)
+                            .background(Color.red)
+                            .cornerRadius(5)
+                    }
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 .alert(isPresented: $showAlert) {
@@ -60,7 +116,7 @@ struct TranslationHistoryDetailView: View {
                         message: Text("Are you sure you want to delete this item?"),
                         primaryButton: .destructive(Text("Delete")) {
                             translationHistoryViewModel.deleteTranslationHistory(history)
-                            translationHistoryViewModel.updateTranslationHistory()
+                            translationHistoryViewModel.reloadTranslationHistory()
                             presentationMode.wrappedValue.dismiss()
                         },
                         secondaryButton: .cancel()
@@ -69,16 +125,27 @@ struct TranslationHistoryDetailView: View {
             }
             .padding()
             .navigationBarTitle("Translation Details", displayMode: .inline)
+            .navigationBarItems(leading: Button(action: {
+                translationHistoryViewModel.reloadTranslationHistory()
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                Text("History")
+            })
+        }
+        .onAppear {
+            editedDate = history.date
+            editedTopic = history.topic
+            editedType = history.type
         }
     }
 }
 
 struct TranslationHistoryDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        @State var demo = true
         @State var demoViewModle = TranslationHistoryViewModel()
+        @State var demoTrans = TranslationHistory(date: Date(), type: "", topic: "", originalText: "", translatedText: "")
         NavigationView {
-            TranslationHistoryDetailView(history: translationHistoryArray[0],translationHistoryViewModel: demoViewModle, isDetailViewPresented: $demo)
+            TranslationHistoryDetailView(history: demoTrans,translationHistoryViewModel: demoViewModle)
         }
     }
 }

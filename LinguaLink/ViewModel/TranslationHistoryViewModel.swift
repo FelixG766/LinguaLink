@@ -32,7 +32,7 @@ class TranslationHistoryViewModel:ObservableObject {
         return translationHistoryArray
     }
     
-    func updateTranslationHistory(){
+    func reloadTranslationHistory(){
         self.translationHistoryArray = fetchTranslationHistory()
     }
     
@@ -60,5 +60,35 @@ class TranslationHistoryViewModel:ObservableObject {
         } catch {
             print("Error deleting history: \(error)")
         }
+    }
+    
+    func updateTrasnlationHistory(history:TranslationHistory, editedDate:Date, editedTopic:String, editedType:String){
+        
+        let context = persistenceController.container.viewContext
+        
+        let fetchRequest: NSFetchRequest<HistoryItem> = HistoryItem.fetchRequest()
+        fetchRequest.predicate = NSPredicate(
+            format: "date == %@ AND type == %@ AND topic == %@ AND originalText == %@ AND translatedText == %@",
+            history.date as CVarArg,
+            history.type,
+            history.topic,
+            history.originalText,
+            history.translatedText
+        )
+        
+        do {
+            let fetchedItems = try context.fetch(fetchRequest)
+            if let existingItem = fetchedItems.first {
+                // Modify the properties of the existing item with new values
+                existingItem.date = editedDate
+                existingItem.type = editedType
+                existingItem.topic = editedTopic
+                // Save the changes
+                try context.save()
+            }
+        } catch {
+            print(error)
+        }
+        
     }
 }

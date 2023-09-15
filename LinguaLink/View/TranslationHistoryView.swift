@@ -10,14 +10,15 @@ import SwiftUI
 struct TranslationHistoryView: View {
     
     @ObservedObject var translationHistoryViewModel = TranslationHistoryViewModel()
-    @State private var isDetailViewPresented = false
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(translationHistoryViewModel.translationHistoryArray, id: \.self) { history in
-                    NavigationLink(destination: TranslationHistoryDetailView(history: history, translationHistoryViewModel: translationHistoryViewModel,isDetailViewPresented: $isDetailViewPresented)) {
+                    ZStack{
                         TranslationHistoryCellView(history: history)
+                        NavigationLink(destination: TranslationHistoryDetailView(history: history, translationHistoryViewModel: translationHistoryViewModel)) {
+                        }
                     }
                 }
                 .onDelete { indexSet in
@@ -32,7 +33,8 @@ struct TranslationHistoryView: View {
             .navigationTitle("History")
         }
         .onAppear{
-            translationHistoryViewModel.updateTranslationHistory()
+            translationHistoryViewModel.reloadTranslationHistory()
+            print("data reloaded")
         }
     }
 }

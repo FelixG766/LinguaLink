@@ -23,8 +23,9 @@ class GoogleCloudTranslationService: TranslationProvider {
     
     //initialise translation services from default(Constant) settings
     init() {
-        self.APIKey = Constant.GoogleAPI.apiKey
-        self.baseURL = Constant.GoogleAPI.baseURL
+        self.APIKey = UserDefaults.getValue(forKey: UserDefaults.googleApiKey, defaultValue: AppDefaults.GoogleAPI.apiKey)
+        self.baseURL = UserDefaults.getValue(forKey: UserDefaults.translatorKey, defaultValue: AppDefaults.GoogleAPI.baseURL)
+
     }
     
     func translate(_ text: String, from sourceLanguage: String, to targetLanguage: String, completion: @escaping (String?, Error?) -> Void) {

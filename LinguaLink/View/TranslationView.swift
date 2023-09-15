@@ -8,10 +8,6 @@
 import SwiftUI
 import CoreData
 
-//import CoreImage
-//import VisionKit
-//import Vision
-//import CoreML
 import NaturalLanguage
 import AVFoundation
 
@@ -25,9 +21,9 @@ struct TranslationView: View {
     
     @State private var isPopUpPresented = false
     @State private var horizontalPadding = 25.0
-    @State private var sourceLanguage = Constant.defaultSourceLanguage
-    @State private var targetLanguage = Constant.defaultTargetLanguage
-    @State private var translationProvider = Constant.defaultTranslator
+    @State private var sourceLanguage =  UserDefaults.getValue(forKey: UserDefaults.sourceLanguageKey, defaultValue: AppDefaults.defaultSourceLanguage)
+    @State private var targetLanguage = UserDefaults.getValue(forKey: UserDefaults.targetLanguageKey, defaultValue: AppDefaults.defaultTargetLanguage)
+    @State private var translationProvider = UserDefaults.getValue(forKey: UserDefaults.translatorKey, defaultValue: AppDefaults.defaultTranslator)
     @State private var detectedLanguage:NLLanguage = .undetermined
     
     var body: some View {
@@ -118,16 +114,29 @@ struct TranslationView: View {
                 .padding(.horizontal, horizontalPadding)
                 .foregroundColor(.primary)
                 
-                //MARK: - Manual Translate Button
-                Button("Translate") {
-                    viewModel.translateWithSelectedModel(viewModel.inputText, from: sourceLanguage, to: targetLanguage, with: translationProvider)
+                //MARK: - Translate Or Reset
+                HStack{
+                    Button("Translate") {
+                        viewModel.translateWithSelectedModel(viewModel.inputText, from: sourceLanguage, to: targetLanguage, with: translationProvider)
+                    }
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(8)
+                    .background(Color.blue)
+                    .cornerRadius(5)
+
+                    Button("Reset") {
+                        viewModel.resetTranslation()
+                    }
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(8)
+                    .background(Color.blue)
+                    .cornerRadius(5)
                 }
-                .font(.headline)
-                .foregroundColor(.white)
-                .padding(10)
-                .background(Color.blue)
-                .cornerRadius(10)
-                
+                .padding(.horizontal, horizontalPadding)
                 //MARK: - Output Text Field
                 ScrollView {
                     Text(viewModel.translation)
@@ -169,6 +178,10 @@ struct TranslationView: View {
         .onTapGesture {
             // Dismiss the keyboard when tapped outside of the TextField
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+        .onAppear{
+            sourceLanguage =  UserDefaults.getValue(forKey: UserDefaults.sourceLanguageKey, defaultValue: AppDefaults.defaultSourceLanguage)
+            targetLanguage = UserDefaults.getValue(forKey: UserDefaults.targetLanguageKey, defaultValue: AppDefaults.defaultTargetLanguage)
         }
     }
 }

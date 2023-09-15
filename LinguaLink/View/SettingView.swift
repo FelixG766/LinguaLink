@@ -10,15 +10,19 @@ import SwiftUI
 struct SettingView: View {
     
     @AppStorage("darkModeEnabled") var darkModeEnabled = false
-    @State private var autoTranslation = false
+//    @State private var autoTranslation = false
     @State private var temperature: Double = 0.7
     @State private var maxTokens: Int = 50
+    @State private var sourceLanguage = UserDefaults.getValue(forKey: UserDefaults.sourceLanguageKey, defaultValue: AppDefaults.defaultSourceLanguage)
+    @State private var targetLanguage = UserDefaults.getValue(forKey: UserDefaults.targetLanguageKey, defaultValue: AppDefaults.defaultTargetLanguage)
+    private let languageOptionManager = LanguageOptionManager()
+    
     
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("General")) {
-                    Toggle("Auto-Translation", isOn: $autoTranslation)
+//                    Toggle("Auto-Translation", isOn: $autoTranslation)
                     Toggle("Dark Mode", isOn: $darkModeEnabled)
                         .onChange(of: darkModeEnabled){newVal in
 
@@ -41,15 +45,23 @@ struct SettingView: View {
                 }
                 
                 Section(header: Text("App Default")) {
-                    Picker("Source Language", selection: .constant(0)) {
-                        Text("English").tag(0)
-                        Text("French").tag(1)
-                        Text("Spanish").tag(2)
+                    Picker("Source Language", selection: $sourceLanguage) {
+                        ForEach(languageOptionManager.loadLanguageOptions(), id: \.self) { option in
+                            Text(option.name)
+                                .tag(option.code)
+                        }
                     }
-                    Picker("Target Language", selection: .constant(0)) {
-                        Text("German").tag(0)
-                        Text("Japanese").tag(1)
-                        Text("Chinese").tag(2)
+                    .onChange(of: sourceLanguage) { newValue in
+                        UserDefaults.standard.set(newValue, forKey: UserDefaults.sourceLanguageKey)
+                    }
+                    Picker("Target Language", selection: $targetLanguage) {
+                        ForEach(languageOptionManager.loadLanguageOptions(), id: \.self) { option in
+                            Text(option.name)
+                                .tag(option.code)
+                        }
+                    }
+                    .onChange(of: targetLanguage) { newValue in
+                        UserDefaults.standard.set(newValue, forKey: UserDefaults.targetLanguageKey)
                     }
                 }
                 

@@ -11,25 +11,28 @@ import UIKit
 
 class TranslationViewModel: ObservableObject, SpeakTextManagerDelegate {
     
-    @Published var translationHistory: [TranslationHistory] = []
+//    @Published var translationHistory: [TranslationHistory] = []
     @Published var translation = ""
     @Published var inputText = ""
     @Published var isSpeaking = false
 
-    private let translator: TranslationProvider
+    private let translationProvider: TranslationProvider
     private let ocrManager: OCRManager = OCRManager()
     private let speakTextManager = SpeakTextManager()
 
     init() {
-        self.translator = Constant.defaultTranslationProvider
+        self.translationProvider = UserDefaults.getValue(forKey: UserDefaults.translationProviderKey, defaultValue: AppDefaults.defaultTranslationProvider)
         speakTextManager.delegate = self
     }
     
 //MARK: - Translate with Selected Model
     func translateWithSelectedModel(_ text: String, from sourceLanguage: String, to targetLanguage: String, with selectedModel:String){
-        
+        guard text != "" else{
+            print("No text to be translated...")
+            return
+        }
         if selectedModel == "GOOGLE"{
-            translator.translate(text, from: sourceLanguage, to: targetLanguage) { translatedText, error in
+            translationProvider.translate(text, from: sourceLanguage, to: targetLanguage) { translatedText, error in
                 DispatchQueue.main.async {
                     if let translation = translatedText {
                         self.translation = translation
@@ -39,6 +42,15 @@ class TranslationViewModel: ObservableObject, SpeakTextManagerDelegate {
                 }
             }
         }
+        else if selectedModel == "CHATGPT"{
+            print("ChatGPT translation")
+        }
+    }
+    
+    //MARK: - Reset Translation View
+    func resetTranslation(){
+        inputText = ""
+        translation = ""
     }
     
     //MARK: - Extract Text From Image

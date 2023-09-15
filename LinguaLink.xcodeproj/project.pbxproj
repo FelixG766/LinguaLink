@@ -17,6 +17,7 @@
 		EE51748F2AB148F700CFB249 /* TranslationHistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE51748E2AB148F700CFB249 /* TranslationHistoryDetailView.swift */; };
 		EE5174912AB2A39000CFB249 /* TranslationHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5174902AB2A39000CFB249 /* TranslationHistoryCellView.swift */; };
 		EE5174932AB2E28C00CFB249 /* TranslationHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5174922AB2E28C00CFB249 /* TranslationHistoryViewModel.swift */; };
+		EE8A85502AB418D20074E0FB /* OpenAIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A854F2AB418D20074E0FB /* OpenAIServiceManager.swift */; };
 		EEDBFCD22AAB01D000E3D5EF /* LinguaLinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */; };
 		EEDBFCD42AAB01D000E3D5EF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */; };
 		EEDBFCD62AAB01D000E3D5EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEDBFCD52AAB01D000E3D5EF /* Assets.xcassets */; };
@@ -29,7 +30,7 @@
 		EEDBFCEE2AAB598000E3D5EF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCED2AAB598000E3D5EF /* MainView.swift */; };
 		EEDBFCF02AAB61E800E3D5EF /* TranslationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCEF2AAB61E800E3D5EF /* TranslationHistoryView.swift */; };
 		EEDBFCF22AAC47AB00E3D5EF /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCF12AAC47AB00E3D5EF /* SettingView.swift */; };
-		EEDBFCF42AAD720D00E3D5EF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCF32AAD720D00E3D5EF /* Constant.swift */; };
+		EEDBFCF42AAD720D00E3D5EF /* AppDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCF32AAD720D00E3D5EF /* AppDefaults.swift */; };
 		EEDBFCF82AADF63600E3D5EF /* LanguageOptions.json in Resources */ = {isa = PBXBuildFile; fileRef = EEDBFCF72AADF63600E3D5EF /* LanguageOptions.json */; };
 		EEDBFCFA2AADF7A400E3D5EF /* LanguageOptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCF92AADF7A400E3D5EF /* LanguageOptionManager.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		EE51748E2AB148F700CFB249 /* TranslationHistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHistoryDetailView.swift; sourceTree = "<group>"; };
 		EE5174902AB2A39000CFB249 /* TranslationHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHistoryCellView.swift; sourceTree = "<group>"; };
 		EE5174922AB2E28C00CFB249 /* TranslationHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHistoryViewModel.swift; sourceTree = "<group>"; };
+		EE8A854F2AB418D20074E0FB /* OpenAIServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIServiceManager.swift; sourceTree = "<group>"; };
 		EEDBFCCE2AAB01D000E3D5EF /* LinguaLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinguaLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinguaLinkApp.swift; sourceTree = "<group>"; };
 		EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
@@ -58,7 +60,7 @@
 		EEDBFCED2AAB598000E3D5EF /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EEDBFCEF2AAB61E800E3D5EF /* TranslationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHistoryView.swift; sourceTree = "<group>"; };
 		EEDBFCF12AAC47AB00E3D5EF /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		EEDBFCF32AAD720D00E3D5EF /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		EEDBFCF32AAD720D00E3D5EF /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 		EEDBFCF72AADF63600E3D5EF /* LanguageOptions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LanguageOptions.json; sourceTree = "<group>"; };
 		EEDBFCF92AADF7A400E3D5EF /* LanguageOptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageOptionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,10 +123,11 @@
 				EE2F3CFF2AAEE7E20053A2D4 /* ImagePicker.swift */,
 				EEDBFCF92AADF7A400E3D5EF /* LanguageOptionManager.swift */,
 				EEDBFCEB2AAB03A900E3D5EF /* TranslationService.swift */,
+				EE8A854F2AB418D20074E0FB /* OpenAIServiceManager.swift */,
 				EE2F3CFD2AAEE4DA0053A2D4 /* CameraManager.swift */,
 				EE2F3CF92AAED7250053A2D4 /* OCRManager.swift */,
 				EE5174862AAF618800CFB249 /* LanguageDetectionManager.swift */,
-				EEDBFCF32AAD720D00E3D5EF /* Constant.swift */,
+				EEDBFCF32AAD720D00E3D5EF /* AppDefaults.swift */,
 				EE5174882AB0089000CFB249 /* SpeakTextManager.swift */,
 			);
 			path = Model;
@@ -240,8 +243,9 @@
 				EEDBFCFA2AADF7A400E3D5EF /* LanguageOptionManager.swift in Sources */,
 				EE2F3CFE2AAEE4DA0053A2D4 /* CameraManager.swift in Sources */,
 				EEDBFCD22AAB01D000E3D5EF /* LinguaLinkApp.swift in Sources */,
+				EE8A85502AB418D20074E0FB /* OpenAIServiceManager.swift in Sources */,
 				EEDBFCEC2AAB03A900E3D5EF /* TranslationService.swift in Sources */,
-				EEDBFCF42AAD720D00E3D5EF /* Constant.swift in Sources */,
+				EEDBFCF42AAD720D00E3D5EF /* AppDefaults.swift in Sources */,
 				EE51748D2AB01F3300CFB249 /* PopUpView.swift in Sources */,
 				EE2F3D002AAEE7E20053A2D4 /* ImagePicker.swift in Sources */,
 				EEDBFCF02AAB61E800E3D5EF /* TranslationHistoryView.swift in Sources */,
@@ -382,8 +386,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -413,8 +417,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
