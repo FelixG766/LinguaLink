@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1AEADBA606700196CF14DCB6 /* Pods_LinguaLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65ADE5247B392913DC7A83DF /* Pods_LinguaLink.framework */; };
 		EE2F3CFA2AAED7250053A2D4 /* OCRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2F3CF92AAED7250053A2D4 /* OCRManager.swift */; };
 		EE2F3CFE2AAEE4DA0053A2D4 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2F3CFD2AAEE4DA0053A2D4 /* CameraManager.swift */; };
 		EE2F3D002AAEE7E20053A2D4 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2F3CFF2AAEE7E20053A2D4 /* ImagePicker.swift */; };
@@ -18,6 +19,9 @@
 		EE5174912AB2A39000CFB249 /* TranslationHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5174902AB2A39000CFB249 /* TranslationHistoryCellView.swift */; };
 		EE5174932AB2E28C00CFB249 /* TranslationHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5174922AB2E28C00CFB249 /* TranslationHistoryViewModel.swift */; };
 		EE8A85502AB418D20074E0FB /* OpenAIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A854F2AB418D20074E0FB /* OpenAIServiceManager.swift */; };
+		EE8A85542AB60E590074E0FB /* SensitiveInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A85532AB60E590074E0FB /* SensitiveInfo.swift */; };
+		EE8A85562AB68B4D0074E0FB /* ErrorCodeRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A85552AB68B4D0074E0FB /* ErrorCodeRegister.swift */; };
+		EE8A85612AB6A9D90074E0FB /* LinguaLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A85602AB6A9D90074E0FB /* LinguaLinkTests.swift */; };
 		EEDBFCD22AAB01D000E3D5EF /* LinguaLinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */; };
 		EEDBFCD42AAB01D000E3D5EF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */; };
 		EEDBFCD62AAB01D000E3D5EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEDBFCD52AAB01D000E3D5EF /* Assets.xcassets */; };
@@ -35,7 +39,19 @@
 		EEDBFCFA2AADF7A400E3D5EF /* LanguageOptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCF92AADF7A400E3D5EF /* LanguageOptionManager.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EE8A85622AB6A9D90074E0FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EEDBFCC62AAB01D000E3D5EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EEDBFCCD2AAB01D000E3D5EF;
+			remoteInfo = LinguaLink;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		65ADE5247B392913DC7A83DF /* Pods_LinguaLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LinguaLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C5CF1BFC805C22DAD6ACB1C /* Pods-LinguaLink.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinguaLink.debug.xcconfig"; path = "Target Support Files/Pods-LinguaLink/Pods-LinguaLink.debug.xcconfig"; sourceTree = "<group>"; };
 		EE2F3CF92AAED7250053A2D4 /* OCRManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRManager.swift; sourceTree = "<group>"; };
 		EE2F3CFD2AAEE4DA0053A2D4 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		EE2F3CFF2AAEE7E20053A2D4 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -47,6 +63,11 @@
 		EE5174902AB2A39000CFB249 /* TranslationHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHistoryCellView.swift; sourceTree = "<group>"; };
 		EE5174922AB2E28C00CFB249 /* TranslationHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHistoryViewModel.swift; sourceTree = "<group>"; };
 		EE8A854F2AB418D20074E0FB /* OpenAIServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIServiceManager.swift; sourceTree = "<group>"; };
+		EE8A85532AB60E590074E0FB /* SensitiveInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensitiveInfo.swift; sourceTree = "<group>"; };
+		EE8A85552AB68B4D0074E0FB /* ErrorCodeRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodeRegister.swift; sourceTree = "<group>"; };
+		EE8A85572AB6A88C0074E0FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EE8A855E2AB6A9D90074E0FB /* LinguaLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinguaLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE8A85602AB6A9D90074E0FB /* LinguaLinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinguaLinkTests.swift; sourceTree = "<group>"; };
 		EEDBFCCE2AAB01D000E3D5EF /* LinguaLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinguaLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinguaLinkApp.swift; sourceTree = "<group>"; };
 		EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
@@ -63,24 +84,52 @@
 		EEDBFCF32AAD720D00E3D5EF /* AppDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefaults.swift; sourceTree = "<group>"; };
 		EEDBFCF72AADF63600E3D5EF /* LanguageOptions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LanguageOptions.json; sourceTree = "<group>"; };
 		EEDBFCF92AADF7A400E3D5EF /* LanguageOptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageOptionManager.swift; sourceTree = "<group>"; };
+		F05CFE0FA49761E454B7AE9E /* Pods-LinguaLink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LinguaLink.release.xcconfig"; path = "Target Support Files/Pods-LinguaLink/Pods-LinguaLink.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		EEDBFCCB2AAB01D000E3D5EF /* Frameworks */ = {
+		EE8A855B2AB6A9D90074E0FB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EEDBFCCB2AAB01D000E3D5EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1AEADBA606700196CF14DCB6 /* Pods_LinguaLink.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5AFACFCC15724BD5B3D670CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65ADE5247B392913DC7A83DF /* Pods_LinguaLink.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE8A855F2AB6A9D90074E0FB /* LinguaLinkTests */ = {
+			isa = PBXGroup;
+			children = (
+				EE8A85602AB6A9D90074E0FB /* LinguaLinkTests.swift */,
+			);
+			path = LinguaLinkTests;
+			sourceTree = "<group>";
+		};
 		EEDBFCC52AAB01D000E3D5EF = {
 			isa = PBXGroup;
 			children = (
 				EEDBFCD02AAB01D000E3D5EF /* LinguaLink */,
+				EE8A855F2AB6A9D90074E0FB /* LinguaLinkTests */,
 				EEDBFCCF2AAB01D000E3D5EF /* Products */,
+				F75484E929CFA8184CF6A472 /* Pods */,
+				5AFACFCC15724BD5B3D670CD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				EEDBFCCE2AAB01D000E3D5EF /* LinguaLink.app */,
+				EE8A855E2AB6A9D90074E0FB /* LinguaLinkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +145,7 @@
 		EEDBFCD02AAB01D000E3D5EF /* LinguaLink */ = {
 			isa = PBXGroup;
 			children = (
+				EE8A85572AB6A88C0074E0FB /* Info.plist */,
 				EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */,
 				EEDBFCE42AAB01F400E3D5EF /* Model */,
 				EEDBFCE62AAB021100E3D5EF /* View */,
@@ -122,10 +173,12 @@
 				EEDBFCE72AAB029F00E3D5EF /* TranslationHistory.swift */,
 				EE2F3CFF2AAEE7E20053A2D4 /* ImagePicker.swift */,
 				EEDBFCF92AADF7A400E3D5EF /* LanguageOptionManager.swift */,
+				EE8A85552AB68B4D0074E0FB /* ErrorCodeRegister.swift */,
 				EEDBFCEB2AAB03A900E3D5EF /* TranslationService.swift */,
 				EE8A854F2AB418D20074E0FB /* OpenAIServiceManager.swift */,
 				EE2F3CFD2AAEE4DA0053A2D4 /* CameraManager.swift */,
 				EE2F3CF92AAED7250053A2D4 /* OCRManager.swift */,
+				EE8A85532AB60E590074E0FB /* SensitiveInfo.swift */,
 				EE5174862AAF618800CFB249 /* LanguageDetectionManager.swift */,
 				EEDBFCF32AAD720D00E3D5EF /* AppDefaults.swift */,
 				EE5174882AB0089000CFB249 /* SpeakTextManager.swift */,
@@ -157,16 +210,45 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F75484E929CFA8184CF6A472 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6C5CF1BFC805C22DAD6ACB1C /* Pods-LinguaLink.debug.xcconfig */,
+				F05CFE0FA49761E454B7AE9E /* Pods-LinguaLink.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		EE8A855D2AB6A9D90074E0FB /* LinguaLinkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE8A85642AB6A9D90074E0FB /* Build configuration list for PBXNativeTarget "LinguaLinkTests" */;
+			buildPhases = (
+				EE8A855A2AB6A9D90074E0FB /* Sources */,
+				EE8A855B2AB6A9D90074E0FB /* Frameworks */,
+				EE8A855C2AB6A9D90074E0FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE8A85632AB6A9D90074E0FB /* PBXTargetDependency */,
+			);
+			name = LinguaLinkTests;
+			productName = LinguaLinkTests;
+			productReference = EE8A855E2AB6A9D90074E0FB /* LinguaLinkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		EEDBFCCD2AAB01D000E3D5EF /* LinguaLink */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EEDBFCE12AAB01D000E3D5EF /* Build configuration list for PBXNativeTarget "LinguaLink" */;
 			buildPhases = (
+				CBD9EC7E3F99BED9CED239EB /* [CP] Check Pods Manifest.lock */,
 				EEDBFCCA2AAB01D000E3D5EF /* Sources */,
 				EEDBFCCB2AAB01D000E3D5EF /* Frameworks */,
 				EEDBFCCC2AAB01D000E3D5EF /* Resources */,
+				AD52ED68AC27D9F08659C91B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,9 +266,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					EE8A855D2AB6A9D90074E0FB = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = EEDBFCCD2AAB01D000E3D5EF;
+					};
 					EEDBFCCD2AAB01D000E3D5EF = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -206,11 +292,19 @@
 			projectRoot = "";
 			targets = (
 				EEDBFCCD2AAB01D000E3D5EF /* LinguaLink */,
+				EE8A855D2AB6A9D90074E0FB /* LinguaLinkTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EE8A855C2AB6A9D90074E0FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EEDBFCCC2AAB01D000E3D5EF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -223,7 +317,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AD52ED68AC27D9F08659C91B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LinguaLink/Pods-LinguaLink-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LinguaLink/Pods-LinguaLink-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LinguaLink/Pods-LinguaLink-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBD9EC7E3F99BED9CED239EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LinguaLink-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		EE8A855A2AB6A9D90074E0FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE8A85612AB6A9D90074E0FB /* LinguaLinkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EEDBFCCA2AAB01D000E3D5EF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,10 +388,12 @@
 				EE2F3CFE2AAEE4DA0053A2D4 /* CameraManager.swift in Sources */,
 				EEDBFCD22AAB01D000E3D5EF /* LinguaLinkApp.swift in Sources */,
 				EE8A85502AB418D20074E0FB /* OpenAIServiceManager.swift in Sources */,
+				EE8A85562AB68B4D0074E0FB /* ErrorCodeRegister.swift in Sources */,
 				EEDBFCEC2AAB03A900E3D5EF /* TranslationService.swift in Sources */,
 				EEDBFCF42AAD720D00E3D5EF /* AppDefaults.swift in Sources */,
 				EE51748D2AB01F3300CFB249 /* PopUpView.swift in Sources */,
 				EE2F3D002AAEE7E20053A2D4 /* ImagePicker.swift in Sources */,
+				EE8A85542AB60E590074E0FB /* SensitiveInfo.swift in Sources */,
 				EEDBFCF02AAB61E800E3D5EF /* TranslationHistoryView.swift in Sources */,
 				EEDBFCE82AAB029F00E3D5EF /* TranslationHistory.swift in Sources */,
 				EE5174932AB2E28C00CFB249 /* TranslationHistoryViewModel.swift in Sources */,
@@ -256,7 +402,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		EE8A85632AB6A9D90074E0FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EEDBFCCD2AAB01D000E3D5EF /* LinguaLink */;
+			targetProxy = EE8A85622AB6A9D90074E0FB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		EE8A85652AB6A9D90074E0FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GF884VD933;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AdvancedIOSProject1.LinguaLinkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LinguaLink.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LinguaLink";
+			};
+			name = Debug;
+		};
+		EE8A85662AB6A9D90074E0FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GF884VD933;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AdvancedIOSProject1.LinguaLinkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LinguaLink.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/LinguaLink";
+			};
+			name = Release;
+		};
 		EEDBFCDF2AAB01D000E3D5EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -373,6 +565,7 @@
 		};
 		EEDBFCE22AAB01D000E3D5EF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C5CF1BFC805C22DAD6ACB1C /* Pods-LinguaLink.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -382,6 +575,7 @@
 				DEVELOPMENT_TEAM = GF884VD933;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LinguaLink/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to capture images for text recognition.\n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -404,6 +598,7 @@
 		};
 		EEDBFCE32AAB01D000E3D5EF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F05CFE0FA49761E454B7AE9E /* Pods-LinguaLink.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -413,6 +608,7 @@
 				DEVELOPMENT_TEAM = GF884VD933;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LinguaLink/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to capture images for text recognition.\n";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -436,6 +632,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EE8A85642AB6A9D90074E0FB /* Build configuration list for PBXNativeTarget "LinguaLinkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE8A85652AB6A9D90074E0FB /* Debug */,
+				EE8A85662AB6A9D90074E0FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EEDBFCC92AAB01D000E3D5EF /* Build configuration list for PBXProject "LinguaLink" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -17,7 +17,7 @@ struct PopUpView: View {
     @State var originalText:String
     @State var translatedText:String
     
-
+    
     var body: some View {
         NavigationView {
             List {
@@ -31,18 +31,18 @@ struct PopUpView: View {
                 Section(header: Text("Type")) {
                     TextField("Enter type", text: $type)
                 }
-
+                
                 Section(header: Text("Topic")) {
                     TextField("Enter topic", text: $topic)
                 }
-
+                
                 Section(header: Text("Original Text")) {
                     Text(originalText)
                         .font(.body)
                         .foregroundColor(.primary)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
-
+                
                 Section(header: Text("Translated Text")) {
                     Text(translatedText)
                         .font(.body)

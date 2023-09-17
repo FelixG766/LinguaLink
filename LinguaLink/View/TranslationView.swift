@@ -13,6 +13,7 @@ import AVFoundation
 
 struct TranslationView: View {
     
+    
     private let languageOptionManager = LanguageOptionManager()
     private let languageDetectionManager = LanguageDetectionManager()
     
@@ -110,6 +111,14 @@ struct TranslationView: View {
                     Text("GOOGLE").tag("GOOGLE")
                     Text("CHATGPT").tag("CHATGPT")
                 }
+                .onTapGesture {
+                    // Change when tapping the picker
+                    if self.translationProvider == "GOOGLE" {
+                        self.translationProvider = "CHATGPT"
+                    } else {
+                        self.translationProvider = "GOOGLE"
+                    }
+                }
                 .pickerStyle(.segmented)
                 .padding(.horizontal, horizontalPadding)
                 .foregroundColor(.primary)
@@ -125,7 +134,7 @@ struct TranslationView: View {
                     .padding(8)
                     .background(Color.blue)
                     .cornerRadius(5)
-
+                    
                     Button("Reset") {
                         viewModel.resetTranslation()
                     }

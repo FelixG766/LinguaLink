@@ -13,6 +13,8 @@ import CoreML
 
 struct OCRManager{
     
+    //    Standard OCR request manager
+    
     func performOCRRequest(to sourceImage:UIImage) -> String {
         var recognisedText = ""
         let requestHandler = VNImageRequestHandler(ciImage: CIImage(image: sourceImage)!)

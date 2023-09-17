@@ -11,39 +11,56 @@ import UIKit
 
 class TranslationViewModel: ObservableObject, SpeakTextManagerDelegate {
     
-//    @Published var translationHistory: [TranslationHistory] = []
+    // Translation View Model class to handle data flows related to translation tasks
+    
     @Published var translation = ""
     @Published var inputText = ""
     @Published var isSpeaking = false
-
-    private let translationProvider: TranslationProvider
+    
+    private var translationProvider: TranslationProvider
+    
+    //MARK: - Class Composition
     private let ocrManager: OCRManager = OCRManager()
     private let speakTextManager = SpeakTextManager()
-
+    
     init() {
         self.translationProvider = UserDefaults.getValue(forKey: UserDefaults.translationProviderKey, defaultValue: AppDefaults.defaultTranslationProvider)
         speakTextManager.delegate = self
     }
     
-//MARK: - Translate with Selected Model
+    //MARK: - Translate with Selected Model
     func translateWithSelectedModel(_ text: String, from sourceLanguage: String, to targetLanguage: String, with selectedModel:String){
+        //MARK: - Handle Empty Input
         guard text != "" else{
             print("No text to be translated...")
             return
         }
+        //MARK: - Google Translation
         if selectedModel == "GOOGLE"{
+            translationProvider = GoogleCloudTranslationService()
             translationProvider.translate(text, from: sourceLanguage, to: targetLanguage) { translatedText, error in
                 DispatchQueue.main.async {
                     if let translation = translatedText {
                         self.translation = translation
                     } else if let error = error {
-                        print(error)
+                        print(error.localizedDescription)
                     }
                 }
             }
         }
+        //MARK: - ChatGPT Translation
         else if selectedModel == "CHATGPT"{
-            print("ChatGPT translation")
+            translationProvider = ChatGPTTranslationService()
+            translationProvider.translate(text, from: sourceLanguage, to: targetLanguage){ translatedText, error in
+                DispatchQueue.main.async {
+                    if let translation = translatedText {
+                        self.translation = translation
+                    } else if let error = error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+            
         }
     }
     

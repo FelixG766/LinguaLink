@@ -15,14 +15,12 @@ struct TranslationHistoryView: View {
         NavigationView {
             List {
                 ForEach(translationHistoryViewModel.translationHistoryArray, id: \.self) { history in
-                    ZStack{
+                    NavigationLink(destination: TranslationHistoryDetailView(history: history, translationHistoryViewModel: translationHistoryViewModel)) {
                         TranslationHistoryCellView(history: history)
-                        NavigationLink(destination: TranslationHistoryDetailView(history: history, translationHistoryViewModel: translationHistoryViewModel)) {
-                        }
                     }
                 }
                 .onDelete { indexSet in
-                    // Delete the selected items from the database
+                    // Swipe and delete the selected items from the database
                     let indicesToDelete = Array(indexSet)
                     for index in indicesToDelete {
                         let historyToDelete = translationHistoryViewModel.translationHistoryArray[index]
@@ -30,11 +28,14 @@ struct TranslationHistoryView: View {
                     }
                 }
             }
-            .navigationTitle("History")
+            .listStyle(.plain)
+            .background(Color.white)
+            .navigationBarTitle("History")
+            .navigationBarTitleDisplayMode(.large)
+            
         }
         .onAppear{
             translationHistoryViewModel.reloadTranslationHistory()
-            print("data reloaded")
         }
     }
 }

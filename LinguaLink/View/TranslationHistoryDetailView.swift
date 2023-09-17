@@ -72,7 +72,6 @@ struct TranslationHistoryDetailView: View {
                     if isEditing {
                         Button(action: {
                             translationHistoryViewModel.updateTrasnlationHistory(history: history, editedDate: editedDate, editedTopic: editedTopic, editedType: editedType)
-//                            translationHistoryViewModel.reloadTranslationHistory()
                             isEditing.toggle() // Exit edit mode
                         }) {
                             Label("Save", systemImage: "square.and.pencil")

@@ -27,9 +27,9 @@ struct PersistenceController {
         }
         return result
     }()
-
+    
     let container: NSPersistentContainer
-
+    
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "LinguaLink")
         if inMemory {
@@ -39,7 +39,7 @@ struct PersistenceController {
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-
+                
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -54,7 +54,7 @@ struct PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
     
-    
+    //MARK: - Save translation record passed in to the database
     func saveTranslationHistory(translationHistory:TranslationHistory){
         let context = PersistenceController.shared.container.viewContext
         let newItem = HistoryItem(context: context)
@@ -72,8 +72,11 @@ struct PersistenceController {
         }
     }
     
+    //MARK: - Fetch all translation records from the database
     func fetchTranslationHistory() -> [HistoryItem]{
+        
         let context = PersistenceController.shared.container.viewContext
+        
         let fetchRequest:NSFetchRequest<HistoryItem> = HistoryItem.fetchRequest()
         
         do{
@@ -85,5 +88,60 @@ struct PersistenceController {
         return []
     }
     
+    //MARK: - Fetch exact trasnlation record
     
+    func fetchExactTranslationHistory(history:TranslationHistory) -> HistoryItem? {
+        
+        let context = PersistenceController.shared.container.viewContext
+        
+        let fetchRequest: NSFetchRequest<HistoryItem> = HistoryItem.fetchRequest()
+        fetchRequest.predicate = NSPredicate(
+            format: "date == %@ AND type == %@ AND topic == %@ AND originalText == %@ AND translatedText == %@",
+            history.date as CVarArg,
+            history.type,
+            history.topic,
+            history.originalText,
+            history.translatedText
+        )
+        do{
+            let matchingItems = try context.fetch(fetchRequest)
+            if let matchingItem = matchingItems.first {
+                return matchingItem
+            }
+        }catch{
+            print(error)
+        }
+        return nil
+    }
+    
+    //MARK: - Delete translation record
+    func deleteTranslationHistory(translationHistory:TranslationHistory){
+        let context = PersistenceController.shared.container.viewContext
+        do{
+            if let itemToDelete = fetchExactTranslationHistory(history: translationHistory){
+                context.delete(itemToDelete)
+                try context.save()
+            }
+        }catch{
+            print("Error deleting history: \(error.localizedDescription)")
+        }
+    }
+    
+    //MARK: - Update translation record
+    func updateTrasnlationHistory(history:TranslationHistory, editedDate:Date, editedTopic:String, editedType:String){
+        
+        let context = PersistenceController.shared.container.viewContext
+        
+        do {
+            if let itemToUpdate = fetchExactTranslationHistory(history: history){
+                // Modify the properties of the existing item with new values
+                itemToUpdate.date = editedDate
+                itemToUpdate.type = editedType
+                itemToUpdate.topic = editedTopic
+                try context.save()
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }

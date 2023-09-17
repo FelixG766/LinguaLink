@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct TranslationHistoryCellView: View {
+    
     let history: TranslationHistory
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
@@ -19,19 +20,17 @@ struct TranslationHistoryCellView: View {
                     .font(.subheadline)
                 Spacer()
             }
-
+            
             Text(history.topic)
                 .font(.headline)
                 .foregroundColor(.primary)
-
+            
             Text(history.type)
                 .font(.subheadline)
                 .foregroundColor(.secondary)
         }
-        .padding(15) // Add padding to the whole cell
         .background(Color.white)
-        .cornerRadius(10)
-        .shadow(color: Color.gray.opacity(0.3), radius: 3, x: 0, y: 2)
+        .padding(5)
     }
 }
 

@@ -10,6 +10,8 @@ import CoreData
 
 class TranslationHistoryViewModel:ObservableObject {
     
+    // Translation History View Model class to handle data flows related to reload, delete, fetch, update translation history records
+    
     @Published var translationHistoryArray:[TranslationHistory] = []
     private var persistenceController = PersistenceController.shared
     
@@ -17,6 +19,7 @@ class TranslationHistoryViewModel:ObservableObject {
         self.translationHistoryArray = fetchTranslationHistory()
     }
     
+    //MARK: - Fetch all translation history in core data
     func fetchTranslationHistory() -> [TranslationHistory]{
         
         let historyItems = persistenceController.fetchTranslationHistory()
@@ -32,63 +35,18 @@ class TranslationHistoryViewModel:ObservableObject {
         return translationHistoryArray
     }
     
+    //MARK: - Reload all history to get up-to-date info
     func reloadTranslationHistory(){
         self.translationHistoryArray = fetchTranslationHistory()
     }
     
+    //MARK: - Delete translation history based on the data from the row used selected
     func deleteTranslationHistory(_ history: TranslationHistory) {
-        
-        let context = persistenceController.container.viewContext
-        
-        let fetchRequest: NSFetchRequest<HistoryItem> = HistoryItem.fetchRequest()
-        fetchRequest.predicate = NSPredicate(
-            format: "date == %@ AND type == %@ AND topic == %@ AND originalText == %@ AND translatedText == %@",
-            history.date as CVarArg,
-            history.type,
-            history.topic,
-            history.originalText,
-            history.translatedText
-        )
-        
-        do {
-            let matchingItems = try context.fetch(fetchRequest)
-            
-            if let itemToDelete = matchingItems.first {
-                context.delete(itemToDelete)
-                try context.save()
-            }
-        } catch {
-            print("Error deleting history: \(error)")
-        }
+        persistenceController.deleteTranslationHistory(translationHistory: history)
     }
     
+    //MARK: - Update data entry for specific translation history
     func updateTrasnlationHistory(history:TranslationHistory, editedDate:Date, editedTopic:String, editedType:String){
-        
-        let context = persistenceController.container.viewContext
-        
-        let fetchRequest: NSFetchRequest<HistoryItem> = HistoryItem.fetchRequest()
-        fetchRequest.predicate = NSPredicate(
-            format: "date == %@ AND type == %@ AND topic == %@ AND originalText == %@ AND translatedText == %@",
-            history.date as CVarArg,
-            history.type,
-            history.topic,
-            history.originalText,
-            history.translatedText
-        )
-        
-        do {
-            let fetchedItems = try context.fetch(fetchRequest)
-            if let existingItem = fetchedItems.first {
-                // Modify the properties of the existing item with new values
-                existingItem.date = editedDate
-                existingItem.type = editedType
-                existingItem.topic = editedTopic
-                // Save the changes
-                try context.save()
-            }
-        } catch {
-            print(error)
-        }
-        
+        persistenceController.updateTrasnlationHistory(history: history, editedDate: editedDate, editedTopic: editedTopic, editedType: editedType)
     }
 }

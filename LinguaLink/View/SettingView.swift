@@ -10,11 +10,11 @@ import SwiftUI
 struct SettingView: View {
     
     @AppStorage("darkModeEnabled") var darkModeEnabled = false
-//    @State private var autoTranslation = false
     @State private var temperature: Double = 0.7
     @State private var maxTokens: Int = 50
     @State private var sourceLanguage = UserDefaults.getValue(forKey: UserDefaults.sourceLanguageKey, defaultValue: AppDefaults.defaultSourceLanguage)
     @State private var targetLanguage = UserDefaults.getValue(forKey: UserDefaults.targetLanguageKey, defaultValue: AppDefaults.defaultTargetLanguage)
+    @State private var translationStyle = UserDefaults.getValue(forKey: UserDefaults.translationStyleKey, defaultValue: AppDefaults.ChatGPT.translationStyle)
     private let languageOptionManager = LanguageOptionManager()
     
     
@@ -22,14 +22,13 @@ struct SettingView: View {
         NavigationView {
             Form {
                 Section(header: Text("General")) {
-//                    Toggle("Auto-Translation", isOn: $autoTranslation)
                     Toggle("Dark Mode", isOn: $darkModeEnabled)
                         .onChange(of: darkModeEnabled){newVal in
-
+                            
                             guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
                                 return
                             }
-
+                            
                             guard let firstWindow = firstScene.windows.first else {
                                 return
                             }
@@ -65,21 +64,14 @@ struct SettingView: View {
                     }
                 }
                 
-                Section(header: Text("Google Translation")) {
-                }
-                
                 Section(header: Text("ChatGPT Translation")) {
-                    HStack {
-                        Text("Variability")
-                        Slider(value: $temperature, in: 0.1...1.0, step: 0.1)
-                        Text("\(temperature, specifier: "%.1f")")
-                    }
-                    
-                    HStack {
-                        Text("Response Length")
-                        Stepper(value: $maxTokens, in: 1...100, step: 1) {
-                            Text("\(maxTokens)")
+                    Picker("Translation Style", selection: $translationStyle) {
+                        ForEach(styleArray, id: \.self) { style in
+                            Text(style).tag(style)
                         }
+                    }
+                    .onChange(of: translationStyle) { newValue in
+                        UserDefaults.standard.set(newValue, forKey: UserDefaults.translationStyleKey)
                     }
                 }
             }

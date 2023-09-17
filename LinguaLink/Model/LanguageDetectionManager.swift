@@ -10,6 +10,9 @@ import NaturalLanguage
 
 struct LanguageDetectionManager{
     
+    //    Static language mapping from language options auto-detected by Natura Language Library to
+    //    Google supported language options
+    
     let languageMapping: [NLLanguage: String] = [
         .amharic: "am",
         .arabic: "ar",
@@ -65,6 +68,8 @@ struct LanguageDetectionManager{
         .vietnamese: "vi",
     ]
     
+    //    Detect language automatically from the recognised text
+    
     func detectLanguage(for text: String, completion: @escaping (NLLanguage) -> Void) {
         let languageRecognizer = NLLanguageRecognizer()
         languageRecognizer.processString(text)
@@ -75,6 +80,8 @@ struct LanguageDetectionManager{
             completion(.undetermined)
         }
     }
+    
+    //    Convert to language option that are recognisable by google translation API
     
     func mappingToTranslationOptions(from detectedLanguage:NLLanguage) -> String {
         if let mappingResult = languageMapping[detectedLanguage]{

@@ -9,6 +9,12 @@ import Foundation
 
 struct LanguageOptionManager{
     
+    //    Language option is a static file obtained from cloud.google.com/translate/docs/languages
+    //    The list of language options is stored in a static JSON file
+    //    More supported language can be incorporated by updating the JSON file in the future
+    //    The relevant API for updating JSON file is
+    //    cloud.google.com/translate/docs/basic/discovering-supported-languages#translate_list_codes-drest
+    
     struct LanguageOption: Codable,Hashable {
         let name: String
         let code: String

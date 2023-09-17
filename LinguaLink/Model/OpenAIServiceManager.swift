@@ -7,46 +7,58 @@
 
 import Foundation
 import Combine
-import NaturalLanguage
+import Alamofire
 
 class OpenAIServiceManager {
     
-    let baseURL = "https://api.openai.com/v1/"
-
-    func sendMessage(message: String) -> AnyPublisher<OpenAICompletionsResponse, Error> {
-        let body = OpenAICompletionsBody(model: "text-davinci-003", prompt: message, temperature: 0.7, max_tokens: 256)
-        let endpoint = URL(string: baseURL + "completions")!
-        var request = URLRequest(url: endpoint)
-        request.httpMethod = "POST"
-        request.addValue("Bearer \(AppDefaults.ChatGPT.apiKey)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        do {
-            request.httpBody = try JSONEncoder().encode(body)
-        } catch {
-            return Fail(error: error).eraseToAnyPublisher()
+    // Prepare the query message for translation service
+    func prepareTranslationDataForAIService(text: String, from sourceLanguage: String, to targetLanguage: String) -> String {
+        
+        // Construct a query string for translation
+        let queryString = "Translate \"" + text + "\" from " + sourceLanguage + " to " + targetLanguage + " in a style of " + AppDefaults.ChatGPT.translationStyle + " and ensure translated text is understandable, grammatically correct and well-structured"
+        return queryString
+    }
+    
+    // Send the translation request to ChatGPT
+    func sendTranslationRequest(queryString: String) -> AnyPublisher<ChatGPTCompletionsResponse, Error> {
+        let body = ChatGPTAPICompletionsBody(model: "text-davinci-003", prompt: queryString, temperature: 0.7, max_tokens: 2000)
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(AppDefaults.ChatGPT.apiKey)"]
+        
+        return Future { [weak self] promise in
+            // Ensure self is not nil and proceed with the request
+            guard self != nil else {
+                return
+            }
+            
+            AF.request(AppDefaults.ChatGPT.baseURL + "completions", method: .post, parameters: body, encoder: .json, headers: headers)
+                .responseDecodable(of: ChatGPTCompletionsResponse.self) { response in
+                    switch response.result {
+                    case .success(let result):
+                        promise(.success(result))
+                    case .failure(let error as NSError):
+                        promise(.failure(NSError(domain: "OpenAIServiceManager.sendTrasnlationRequest", code: ErrorCodes.failToReceiveRespondFromChatGPT,userInfo: error.userInfo)))
+                    }
+                }
         }
-
-        return URLSession.shared.dataTaskPublisher(for: request)
-            .map(\.data)
-            .decode(type: OpenAICompletionsResponse.self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+        .eraseToAnyPublisher()
     }
 }
 
-struct OpenAICompletionsBody:Encodable{
+// Structure to represent the body of a ChatGPT API completion request
+struct ChatGPTAPICompletionsBody: Encodable {
     let model: String
     let prompt: String
-    let temperature:Float?
-    let max_tokens:Int
+    let temperature: Float?
+    let max_tokens: Int
 }
 
-struct OpenAICompletionsResponse:Decodable {
-    let id:String
-    let choices:[OpenAICompetitionsChoice]
+// Structure to represent a response from ChatGPT API
+struct ChatGPTCompletionsResponse: Decodable {
+    let id: String
+    let choices: [ChatGPTCompetitionsChoice]
 }
 
-struct OpenAICompetitionsChoice:Decodable {
-    let text:String
+// Structure to represent a choice in ChatGPT API response
+struct ChatGPTCompetitionsChoice: Decodable {
+    let text: String
 }
