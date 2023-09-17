@@ -8,6 +8,6 @@
 import Foundation
 
 struct SensitiveInfo{
-    static let googleAPIKey = "AIzaSyDPEkqgFispeW6BpNgArcWPUityMiidVO4"
-    static let chatGPTAPIKey = "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"
+    static let googleAPIKey = ""
+    static let chatGPTAPIKey = ""
 }
