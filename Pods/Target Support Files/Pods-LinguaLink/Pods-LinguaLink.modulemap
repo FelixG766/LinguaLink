@@ -1,0 +1,6 @@
+framework module Pods_LinguaLink {
+  umbrella header "Pods-LinguaLink-umbrella.h"
+
+  export *
+  module * { export * }
+}

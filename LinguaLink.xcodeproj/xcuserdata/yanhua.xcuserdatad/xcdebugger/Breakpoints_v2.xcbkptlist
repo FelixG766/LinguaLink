@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "54F75FAB-F874-4641-AF37-9FA535C7B6EA"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C2C8695B-5C11-4E13-82F7-C6166A82E4C9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../Library/Developer/Xcode/DerivedData/LinguaLink-ckboqmrvkwvxqxcjxvcfumghjpza/Build/Intermediates.noindex/Previews/LinguaLink/Intermediates.noindex/LinguaLink.build/Debug-iphonesimulator/LinguaLink.build/DerivedSources/CoreDataGenerated/LinguaLink/TranslationHistory+CoreDataProperties.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "TranslationHistory"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
