@@ -21,7 +21,8 @@
 		EE8A85502AB418D20074E0FB /* OpenAIServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A854F2AB418D20074E0FB /* OpenAIServiceManager.swift */; };
 		EE8A85542AB60E590074E0FB /* SensitiveInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A85532AB60E590074E0FB /* SensitiveInfo.swift */; };
 		EE8A85562AB68B4D0074E0FB /* ErrorCodeRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A85552AB68B4D0074E0FB /* ErrorCodeRegister.swift */; };
-		EE8A85612AB6A9D90074E0FB /* LinguaLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A85602AB6A9D90074E0FB /* LinguaLinkTests.swift */; };
+		EE8A85612AB6A9D90074E0FB /* TranslationHistoryViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A85602AB6A9D90074E0FB /* TranslationHistoryViewModelTest.swift */; };
+		EE8A85682AB6B8A90074E0FB /* PopUpViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8A85672AB6B8A90074E0FB /* PopUpViewModelTest.swift */; };
 		EEDBFCD22AAB01D000E3D5EF /* LinguaLinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */; };
 		EEDBFCD42AAB01D000E3D5EF /* TranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */; };
 		EEDBFCD62AAB01D000E3D5EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEDBFCD52AAB01D000E3D5EF /* Assets.xcassets */; };
@@ -67,7 +68,8 @@
 		EE8A85552AB68B4D0074E0FB /* ErrorCodeRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCodeRegister.swift; sourceTree = "<group>"; };
 		EE8A85572AB6A88C0074E0FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EE8A855E2AB6A9D90074E0FB /* LinguaLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LinguaLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE8A85602AB6A9D90074E0FB /* LinguaLinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinguaLinkTests.swift; sourceTree = "<group>"; };
+		EE8A85602AB6A9D90074E0FB /* TranslationHistoryViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationHistoryViewModelTest.swift; sourceTree = "<group>"; };
+		EE8A85672AB6B8A90074E0FB /* PopUpViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewModelTest.swift; sourceTree = "<group>"; };
 		EEDBFCCE2AAB01D000E3D5EF /* LinguaLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LinguaLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDBFCD12AAB01D000E3D5EF /* LinguaLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinguaLinkApp.swift; sourceTree = "<group>"; };
 		EEDBFCD32AAB01D000E3D5EF /* TranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationView.swift; sourceTree = "<group>"; };
@@ -117,7 +119,8 @@
 		EE8A855F2AB6A9D90074E0FB /* LinguaLinkTests */ = {
 			isa = PBXGroup;
 			children = (
-				EE8A85602AB6A9D90074E0FB /* LinguaLinkTests.swift */,
+				EE8A85602AB6A9D90074E0FB /* TranslationHistoryViewModelTest.swift */,
+				EE8A85672AB6B8A90074E0FB /* PopUpViewModelTest.swift */,
 			);
 			path = LinguaLinkTests;
 			sourceTree = "<group>";
@@ -364,7 +367,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE8A85612AB6A9D90074E0FB /* LinguaLinkTests.swift in Sources */,
+				EE8A85612AB6A9D90074E0FB /* TranslationHistoryViewModelTest.swift in Sources */,
+				EE8A85682AB6B8A90074E0FB /* PopUpViewModelTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
