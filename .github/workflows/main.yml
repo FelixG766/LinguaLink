@@ -1,0 +1,65 @@
+name: Package & Deploy CloudFormation
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      stack_name:
+        description: "CloudFormation stack name"
+        required: false
+        default: "${{ github.event.repository.name }}-stack"
+
+env:
+  TEMPLATE_FILE: template.yml
+  PACKAGED_FILE: packaged-template.yml
+  ARTIFACT_BUCKET: s3bucket1
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # AUTH OPTION A: OIDC (recommended)
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::123456789012:role/GitHubActionsDeployRole   # <-- replace
+          aws-region: ap-southeast-2                                              # region for the deploy
+
+      # AUTH OPTION B: Access keys (uncomment if you need it)
+      # - name: Configure AWS credentials (Access Keys)
+      #   uses: aws-actions/configure-aws-credentials@v4
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: ap-southeast-2
+
+      - name: Validate template
+        run: aws cloudformation validate-template --template-body file://${{ env.TEMPLATE_FILE }}
+
+      - name: Package template
+        run: |
+          aws cloudformation package \
+            --template-file "${TEMPLATE_FILE}" \
+            --s3-bucket "${ARTIFACT_BUCKET}" \
+            --output-template-file "${PACKAGED_FILE}"
+
+      - name: Deploy stack
+        run: |
+          aws cloudformation deploy \
+            --template-file "${PACKAGED_FILE}" \
+            --stack-name "${{ github.event.inputs.stack_name || format('{0}-stack', github.event.repository.name) }}" \
+            --capabilities CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND
+
+      - name: Show stack outputs
+        run: |
+          aws cloudformation describe-stacks \
+            --stack-name "${{ github.event.inputs.stack_name || format('{0}-stack', github.event.repository.name) }}" \
+            --query "Stacks[0].Outputs" --output table || true
